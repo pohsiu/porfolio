@@ -2,7 +2,6 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import { makeStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
-import { Link as RouterLink } from "react-router-dom";
 
 const lists = [
   'about',
@@ -22,9 +21,7 @@ const NavBar = () => {
     <div>
       {lists.map(list => (
         <Link className={classes.link}>
-          <RouterLink to={`/${list}`}>
-            {list}
-          </RouterLink>
+          {list}
         </Link>
       ))}
     </div>
