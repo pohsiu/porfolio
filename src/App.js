@@ -33,10 +33,11 @@ const useStyles = makeStyles(theme => ({
 function App() {
   const classes = useStyles();
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(undefined);
+  const [bgRef, setBgRef] = useState(null);
   return (
     <div className={classes.app}>
-      <BackgroundSection className={classes.background} selectedProjectIndex={selectedProjectIndex} />
-      <Projects className={classes.projects} setSelectedProjectIndex={setSelectedProjectIndex} />
+      <BackgroundSection setBgRef={setBgRef} className={classes.background} selectedProjectIndex={selectedProjectIndex} />
+      <Projects bgRef={bgRef} className={classes.projects} setSelectedProjectIndex={setSelectedProjectIndex} />
     </div>
   );
 }

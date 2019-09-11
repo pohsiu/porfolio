@@ -1,9 +1,9 @@
-import React, { useRef, useCallback, useState } from 'react';
+import React, { useRef, useCallback, useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slide from '@material-ui/core/Slide';
 import classNames from 'clsx';
-
+import HoverEffect from '../hover';
 
 const projectLists = [
   {
@@ -84,11 +84,35 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
+const srcs = [
+  './images/bg1.jpg',
+  './images/bg2.jpg'
+]
+
 const Project = props => {
   const  classes = useStyles();
   const { mouseOver, mouseOut } = props;
   const [isHover, setIsHover] = useState(false);
+  const { bgRef } = props;
 
+  useEffect(()=> {
+    const el = bgRef;
+    console.log(props.bgRef);
+    if (bgRef) {
+      new HoverEffect({
+        parent: el,
+        intensity: "0.6",
+        speedIn: "1.2",
+        speedOut: "0.5",
+        easing: undefined,
+        hover: undefined,
+        image1: srcs[0],
+        image2: srcs[1],
+        displacementImage: "./images/displacement/6.jpg"
+      });
+    }
+    
+  }, [props.bgRef]);
   const onMouseOver = useCallback(() => {
     mouseOver();
     setIsHover(true);
@@ -147,7 +171,7 @@ const Projects = props => {
     });
   }, [projectsRef]);
 
-  const { setSelectedProjectIndex } = props;
+  const { setSelectedProjectIndex, bgRef } = props;
   const mouseOver = useCallback((current) => () => {
     setSelectedProjectIndex(current);
   }, [setSelectedProjectIndex]);
@@ -160,6 +184,7 @@ const Projects = props => {
     <div ref={projectsRef} className={props.className} onWheel={onWheelEvent} >
       {projectLists.map((each, index) => 
         <Project
+          bgRef={bgRef}
           key={`pro${index}`}
           mouseOut={mouseOut}
           mouseOver={mouseOver(index)}
