@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import BackgroundSection from './components/BackgroundSection';
 import Projects from './components/Projects';
@@ -8,10 +8,13 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flex: 1,
     width: '100%',
+    height: '100vh',
+    position: 'relative',
     '--large-viewport': 1440,
   },
   background: {
-
+    width: '100%',
+    display: 'flex',
   },
   projects: {
     position: 'absolute',
@@ -29,10 +32,11 @@ const useStyles = makeStyles(theme => ({
 
 function App() {
   const classes = useStyles();
+  const [selectedProjectIndex, setSelectedProjectIndex] = useState(undefined);
   return (
     <div className={classes.app}>
-      <BackgroundSection className={classes.background} />
-      <Projects className={classes.projects} />
+      <BackgroundSection className={classes.background} selectedProjectIndex={selectedProjectIndex} />
+      <Projects className={classes.projects} setSelectedProjectIndex={setSelectedProjectIndex} />
     </div>
   );
 }

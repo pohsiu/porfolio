@@ -4,6 +4,34 @@ import Typography from '@material-ui/core/Typography';
 import Slide from '@material-ui/core/Slide';
 import classNames from 'clsx';
 
+
+const projectLists = [
+  {
+    title: "SpaceTime",
+    subtitle: "Product",
+    description: "We run a product that serves distributed teams",
+  },
+  {
+    title: "Blue Diamond",
+    subtitle: "Platform Design",
+    description: "We redesigned and rebuilt the Blue Diamond website from the ground-up.",
+  },
+  {
+    title: "SpaceTime",
+    subtitle: "Product",
+    description: "We run a product that serves distributed teams",
+  },
+  {
+    title: "SpaceTime",
+    subtitle: "Product",
+    description: "We run a product that serves distributed teams",
+  },
+  {
+    title: "SpaceTime",
+    subtitle: "Product",
+    description: "We run a product that serves distributed teams",
+  },
+]
 const useStyles = makeStyles(theme => ({
   project: {
     display: 'inline-block',
@@ -58,15 +86,18 @@ const useStyles = makeStyles(theme => ({
 
 const Project = props => {
   const  classes = useStyles();
+  const { mouseOver, mouseOut } = props;
   const [isHover, setIsHover] = useState(false);
 
   const onMouseOver = useCallback(() => {
+    mouseOver();
     setIsHover(true);
-  }, []);
+  }, [mouseOver]);
 
   const onMouseOut = useCallback(() => {
+    mouseOut();
     setIsHover(false);
-  }, []);
+  }, [mouseOut]);
 
   const { description, title, subtitle } = props;
   return (
@@ -97,6 +128,7 @@ const ScrollBar = props => {
 
 const Projects = props => {
   const classes = useStyles();
+  
   const projectsRef = useRef(null);
   const [currentTransform, setCurrentTransform] = useState(0);
   const onWheelEvent = useCallback((event) => {
@@ -113,14 +145,27 @@ const Projects = props => {
       return newValue;
     });
   }, [projectsRef]);
+
+  const { setSelectedProjectIndex } = props;
+  const mouseOver = useCallback((current) => () => {
+    setSelectedProjectIndex(current);
+  }, [setSelectedProjectIndex]);
+
+  const mouseOut = useCallback(() => {
+    setSelectedProjectIndex(undefined);
+  }, [setSelectedProjectIndex]);
+
   return (
     <div ref={projectsRef} className={props.className} onWheel={onWheelEvent} >
-      <Project title="SpaceTime" subtitle="Product" description="We run a product that serves distributed teams"/>
-      <Project title="Blue Diamond" subtitle="Platform Design" description="We run a product that serves distributed teams"/>
-      <Project title="SpaceTime" subtitle="Product" description="We run a product that serves distributed teams"/>
-      <Project title="SpaceTime" subtitle="Product" description="We run a product that serves distributed teams"/>
-      <Project title="SpaceTime" subtitle="Product" description="We run a product that serves distributed teams"/>
-      <Project title="SpaceTime" subtitle="Product" description="We run a product that serves distributed teams"/>
+      {projectLists.map((each, index) => 
+        <Project
+          key={`pro${index}`}
+          mouseOut={mouseOut}
+          mouseOver={mouseOver(index)}
+          title={each.title}
+          subtitle={each.subtitle}
+          description={each.description}
+        />)}
       <ScrollBar style={{ transform: `translateX(${currentTransform}px)`, width: 374 }}/>
     </div>
   );

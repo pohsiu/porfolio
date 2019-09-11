@@ -6,7 +6,7 @@ export default createMuiTheme({
       main: '#fafafa',
     },
     secondary: {
-      main: `rgb(77, 190, 164)`,
+      main: '#000',
     }
   },
 });
