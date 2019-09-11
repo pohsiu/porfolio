@@ -1,5 +1,6 @@
 import React, { useRef, useCallback, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import Slide from '@material-ui/core/Slide';
 import classNames from 'clsx';
 
@@ -8,6 +9,7 @@ const useStyles = makeStyles(theme => ({
     display: 'inline-block',
     position: 'relative',
     height: '100%',
+    width: '40%',
     minWidth: '35rem',
     transition: 'opacity .2s ease-in-out, background .2s ease-in-out',
     whiteSpace: 'normal',
@@ -15,17 +17,18 @@ const useStyles = makeStyles(theme => ({
     boxSizing: 'border-box',
     verticalAlign: 'top',
     cursor: 'none',
+    paddingBottom: 48,
+    padding: '0 4.5rem 8rem',
   },
   projectIsHover: {
-    borderLeft: '0.5px #9da7b3 solid',
-    borderRight: '0.5px #9da7b3 solid',
+    borderLeft: '0.2px #9da7b3 solid',
+    borderRight: '0.2px #9da7b3 solid',
   },
   projectLink: {
     display: 'flex',
     position: 'relative',
     width: '100%',
     height: '100%',
-    padding: '0 4.5rem 8rem',
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-end',
@@ -65,23 +68,16 @@ const Project = props => {
     setIsHover(false);
   }, []);
 
+  const { description, title, subtitle } = props;
   return (
     <div className={classNames(classes.project, {[classes.projectIsHover]: isHover })} onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
       <a className={classNames(classes.projectLink, {[classes.projectLinkIsHover]: isHover })} href={'/'}>
-        <h3>
-          <span>Product</span>
-        </h3>
-        <h2>
-          <span>Spacetime</span>
-        </h2>
+        <Typography variant="h5" gutterBottom>{subtitle}</Typography>
+        <Typography variant="h1" component="h2" gutterBottom>{title}</Typography>
         <Slide direction="up" in={isHover} mountOnEnter unmountOnExit>
           <div>
-            <p>
-              <span>We run a product that serves distributed teams</span>
-            </p>
-            <h4>
-              <span>View Case Study</span>
-            </h4>
+            <Typography variant="subtitle1" gutterBottom>{description}</Typography>
+            <Typography variant="h6" gutterBottom>View Case Study -></Typography>
           </div>
         </Slide>
       </a>
@@ -119,12 +115,12 @@ const Projects = props => {
   }, [projectsRef]);
   return (
     <div ref={projectsRef} className={props.className} onWheel={onWheelEvent} >
-      <Project />
-      <Project />
-      <Project />
-      <Project />
-      <Project />
-      <Project />
+      <Project title="SpaceTime" subtitle="Product" description="We run a product that serves distributed teams"/>
+      <Project title="Blue Diamond" subtitle="Platform Design" description="We run a product that serves distributed teams"/>
+      <Project title="SpaceTime" subtitle="Product" description="We run a product that serves distributed teams"/>
+      <Project title="SpaceTime" subtitle="Product" description="We run a product that serves distributed teams"/>
+      <Project title="SpaceTime" subtitle="Product" description="We run a product that serves distributed teams"/>
+      <Project title="SpaceTime" subtitle="Product" description="We run a product that serves distributed teams"/>
       <ScrollBar style={{ transform: `translateX(${currentTransform}px)`, width: 374 }}/>
     </div>
   );
