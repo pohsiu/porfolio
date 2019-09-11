@@ -8,7 +8,9 @@
     "clsx": "^1.0.4",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-scripts": "3.1.1"
+    "react-scripts": "3.1.1",
+    "react-three-fiber": "^2.4.3",
+    "three": "^0.108.0"
   },
   "scripts": {
     "start": "react-scripts start",

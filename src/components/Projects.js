@@ -100,15 +100,16 @@ const Project = props => {
   }, [mouseOut]);
 
   const { description, title, subtitle } = props;
+  const color = isHover ? 'primary' : 'secondary';
   return (
     <div className={classNames(classes.project, {[classes.projectIsHover]: isHover })} onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
       <a className={classNames(classes.projectLink, {[classes.projectLinkIsHover]: isHover })} href={'/'}>
-        <Typography variant="h5" gutterBottom>{subtitle}</Typography>
-        <Typography variant="h1" component="h2" gutterBottom>{title}</Typography>
+        <Typography variant="h5" color={color} gutterBottom>{subtitle}</Typography>
+        <Typography variant="h1" component="h2" color={color} gutterBottom>{title}</Typography>
         <Slide direction="up" in={isHover} mountOnEnter unmountOnExit>
           <div>
-            <Typography variant="subtitle1" gutterBottom>{description}</Typography>
-            <Typography variant="h6" gutterBottom>View Case Study -></Typography>
+            <Typography variant="subtitle1" color={color} gutterBottom>{description}</Typography>
+            <Typography variant="h6" color={color} gutterBottom>View Case Study -></Typography>
           </div>
         </Slide>
       </a>
