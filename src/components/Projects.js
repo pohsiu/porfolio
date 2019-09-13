@@ -94,25 +94,6 @@ const Project = props => {
   const { mouseOver, mouseOut } = props;
   const [isHover, setIsHover] = useState(false);
   const { bgRef } = props;
-
-  useEffect(()=> {
-    const el = bgRef;
-    console.log(props.bgRef);
-    if (bgRef) {
-      new HoverEffect({
-        parent: el,
-        intensity: "0.6",
-        speedIn: "1.2",
-        speedOut: "0.5",
-        easing: undefined,
-        hover: undefined,
-        image1: srcs[0],
-        image2: srcs[1],
-        displacementImage: "./images/displacement/6.jpg"
-      });
-    }
-    
-  }, [props.bgRef]);
   const onMouseOver = useCallback(() => {
     mouseOver();
     setIsHover(true);

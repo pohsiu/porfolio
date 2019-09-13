@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import BackgroundSection from './components/BackgroundSection';
+import BackgroundSection from './components/Scene';
 import Projects from './components/Projects';
 
 const useStyles = makeStyles(theme => ({
