@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as THREE from 'three';
 import { TweenMax, Expo } from 'gsap';
 
-var vertex = `
+const vertex = `
   varying vec2 vUv;
   void main() {
   vUv = uv;
@@ -10,7 +10,7 @@ var vertex = `
   }
 `;
 
-var fragment = `
+const fragment = `
   varying vec2 vUv;
 
   uniform sampler2D texture;
@@ -51,23 +51,16 @@ var fragment = `
   // gl_FragColor = disp;
   }
 `;
-
-const srcs = [
-  './images/bg1.jpg',
-  './images/bg2.jpg'
-]
-var speedIn = "1.2";
-var speedOut = "0.5";
-var easing = Expo.easeOut;
-var intensity = "0.6";
-  
-var image1 = srcs[0];
-var image2 = srcs[1];
-var dispImage = "./images/displacement/6.jpg"
+const speedIn = "1.2";
+const speedOut = "0.5";
+const easing = Expo.easeOut;
+const intensity = "0.6";
+const dispImage = "./images/displacement/6.jpg"
 
 class ThreeScene extends Component{
   componentDidMount(){
     //ADD SCENE
+    const { image1, image2 } = this.props;
     this.scene = new THREE.Scene()
     //ADD CAMERA
     this.camera = new THREE.OrthographicCamera(
@@ -83,60 +76,58 @@ class ThreeScene extends Component{
     this.renderer = new THREE.WebGLRenderer({ antialias: false })
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setClearColor(0xffffff, 0.0);
-    this.renderer.setSize(this.mount.offsetWidth, this.mount.offsetHeight);
+    this.renderer.setSize(this.mount.clientWidth, this.mount.clientHeight);
     this.mount.appendChild(this.renderer.domElement)
 
-    var loader = new THREE.TextureLoader();
+    const loader = new THREE.TextureLoader();
     loader.crossOrigin = "";
-    var texture1 = loader.load(image1);
-    var texture2 = loader.load(image2);
-
-    var disp = loader.load(dispImage);
+    const texture1 = loader.load(image1);
+    const texture2 = loader.load(image2);
+    const disp = loader.load(dispImage);
     disp.wrapS = disp.wrapT = THREE.RepeatWrapping;
 
     texture1.magFilter = texture2.magFilter = THREE.LinearFilter;
     texture1.minFilter = texture2.minFilter = THREE.LinearFilter;
 
-    texture1.anisotropy = this.renderer.getMaxAnisotropy();
-    texture2.anisotropy = this.renderer.getMaxAnisotropy();
+    texture1.anisotropy = this.renderer.capabilities.getMaxAnisotropy();
+    texture2.anisotropy = this.renderer.capabilities.getMaxAnisotropy();
     
 
     this.mat = new THREE.ShaderMaterial({
-        uniforms: {
+      uniforms: {
         effectFactor: { type: "f", value: intensity },
         dispFactor: { type: "f", value: 0.0 },
         texture: { type: "t", value: texture1 },
         texture2: { type: "t", value: texture2 },
         disp: { type: "t", value: disp }
-        },
+      },
 
-        vertexShader: vertex,
-        fragmentShader: fragment,
-        transparent: true,
-        opacity: 1.0
+      vertexShader: vertex,
+      fragmentShader: fragment,
+      transparent: true,
+      opacity: 1.0
     });
 
-    var geometry = new THREE.PlaneBufferGeometry(
+    const geometry = new THREE.PlaneBufferGeometry(
         this.mount.offsetWidth,
         this.mount.offsetHeight,
         1
     );
-    var object = new THREE.Mesh(geometry, this.mat);
-    this.scene.add(object)
-    this.start()
+    this.object = new THREE.Mesh(geometry, this.mat);
+    this.scene.add(this.object);
+
+    window.addEventListener("resize", (e) => {
+      this.mount && this.renderer.setSize(this.mount.offsetWidth, this.mount.offsetHeight);
+    });
+    this.start();
+    
+    this.next(); 
   }
   componentWillUnmount(){
-    this.stop()
+    this.previous();
+    this.stop();
+    window.removeEventListener("resize", () => {} );
     this.mount.removeChild(this.renderer.domElement)
-  }
-
-  componentDidUpdate() {
-      const { selectedProjectIndex } = this.props;
-      if (selectedProjectIndex % 2 === 0) {
-          this.next();
-      } else {
-          this.previous();
-      }
   }
   start = () => {
     if (!this.frameId) {

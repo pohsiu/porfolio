@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slide from '@material-ui/core/Slide';
 import classNames from 'clsx';
-import HoverEffect from '../hover';
+// import HoverEffect from '../hover';
 
 const projectLists = [
   {
@@ -93,7 +93,7 @@ const Project = props => {
   const  classes = useStyles();
   const { mouseOver, mouseOut } = props;
   const [isHover, setIsHover] = useState(false);
-  const { bgRef } = props;
+  
   const onMouseOver = useCallback(() => {
     mouseOver();
     setIsHover(true);
@@ -165,7 +165,6 @@ const Projects = props => {
     <div ref={projectsRef} className={props.className} onWheel={onWheelEvent} >
       {projectLists.map((each, index) => 
         <Project
-          bgRef={bgRef}
           key={`pro${index}`}
           mouseOut={mouseOut}
           mouseOver={mouseOver(index)}

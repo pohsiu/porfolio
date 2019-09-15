@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import BackgroundSection from './components/Scene';
 import Projects from './components/Projects';
@@ -30,14 +30,65 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const projectMap = {
+  'section1': {
+    pre: './images/bg2.jpg',
+    image: './images/bg1.jpg',
+  },
+  'section2': {
+    pre: './images/bg3.jpg',
+    image: './images/bg2.jpg',
+  },
+  'section3': {
+    pre: './images/bg1.jpg',
+    image: './images/bg3.jpg',
+  },
+  'section4': {
+    pre: './images/bg2.jpg',
+    image: './images/bg1.jpg',
+  },
+  'section5': {
+    pre: './images/bg3.jpg',
+    image: './images/bg2.jpg',
+  },
+  'section6': {
+    pre: './images/bg1.jpg',
+    image: './images/bg3.jpg',
+  },
+}
+
+const projects = [
+  'section1', 'section2', 'section3', 'section4', 'section5', 'section6'
+]
+
+
+function usePrevious(value) {
+  // The ref object is a generic container whose current property is mutable ...
+  // ... and can hold any value, similar to an instance property on a class
+  const ref = useRef();
+  
+  // Store current value in ref
+  useEffect(() => {
+    ref.current = value;
+  }, [value]); // Only re-run if value changes
+  
+  // Return previous value (happens before update in useEffect above)
+  return ref.current;
+}
 function App() {
   const classes = useStyles();
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(undefined);
-  const [bgRef, setBgRef] = useState(null);
+  const choosenProject = projects[selectedProjectIndex] || 'section1';
   return (
     <div className={classes.app}>
-      <BackgroundSection setBgRef={setBgRef} className={classes.background} selectedProjectIndex={selectedProjectIndex} />
-      <Projects bgRef={bgRef} className={classes.projects} setSelectedProjectIndex={setSelectedProjectIndex} />
+      <BackgroundSection
+        key={choosenProject}
+        className={classes.background}
+        selectedProjectIndex={selectedProjectIndex}
+        image1={projectMap[choosenProject].pre}
+        image2={projectMap[choosenProject].image}
+      />
+      <Projects className={classes.projects} setSelectedProjectIndex={setSelectedProjectIndex} />
     </div>
   );
 }
