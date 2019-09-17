@@ -107,7 +107,7 @@ const Project = props => {
   const { description, title, subtitle } = props;
   const color = isHover ? 'primary' : 'secondary';
   return (
-    <div className={classNames(classes.project, {[classes.projectIsHover]: isHover })} onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
+    <div className={classNames(classes.project, {[classes.projectIsHover]: isHover })} onMouseEnter={onMouseOver} onMouseLeave={onMouseOut}>
       <a className={classNames(classes.projectLink, {[classes.projectLinkIsHover]: isHover })} href={'/'}>
         <Typography variant="h5" color={color} gutterBottom>{subtitle}</Typography>
         <Typography variant="h1" component="h2" color={color} gutterBottom>{title}</Typography>
@@ -152,9 +152,9 @@ const Projects = props => {
     });
   }, [projectsRef]);
 
-  const { setSelectedProjectIndex, bgRef } = props;
+  const { setSelectedProjectIndex } = props;
   const mouseOver = useCallback((current) => () => {
-    setSelectedProjectIndex(current);
+    setSelectedProjectIndex(current.toString());
   }, [setSelectedProjectIndex]);
 
   const mouseOut = useCallback(() => {

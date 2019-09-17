@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import BackgroundSection from './components/Scene';
+import BackgroundSection from './components/TestScene';
 import Projects from './components/Projects';
 
 const useStyles = makeStyles(theme => ({
@@ -78,15 +78,11 @@ function usePrevious(value) {
 function App() {
   const classes = useStyles();
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(undefined);
-  const choosenProject = projects[selectedProjectIndex] || 'section1';
   return (
     <div className={classes.app}>
       <BackgroundSection
-        key={choosenProject}
         className={classes.background}
         selectedProjectIndex={selectedProjectIndex}
-        image1={projectMap[choosenProject].pre}
-        image2={projectMap[choosenProject].image}
       />
       <Projects className={classes.projects} setSelectedProjectIndex={setSelectedProjectIndex} />
     </div>
