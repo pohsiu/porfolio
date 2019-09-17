@@ -84,11 +84,6 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const srcs = [
-  './images/bg1.jpg',
-  './images/bg2.jpg'
-]
-
 const Project = props => {
   const  classes = useStyles();
   const { mouseOver, mouseOut } = props;
@@ -133,7 +128,7 @@ const ScrollBar = props => {
 }
 
 const Projects = props => {
-  const classes = useStyles();
+  // const classes = useStyles();
   
   const projectsRef = useRef(null);
   const [currentTransform, setCurrentTransform] = useState(0);

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import BackgroundSection from './components/TestScene';
+import BackgroundSection from './components/BackgroundSection';
 import Projects from './components/Projects';
 
 const useStyles = makeStyles(theme => ({
@@ -32,28 +32,22 @@ const useStyles = makeStyles(theme => ({
 
 const projectMap = {
   'section1': {
-    pre: './images/bg2.jpg',
     image: './images/bg1.jpg',
   },
   'section2': {
-    pre: './images/bg3.jpg',
     image: './images/bg2.jpg',
   },
   'section3': {
-    pre: './images/bg1.jpg',
     image: './images/bg3.jpg',
   },
   'section4': {
-    pre: './images/bg2.jpg',
-    image: './images/bg1.jpg',
+    image: './images/bg4.jpg',
   },
   'section5': {
-    pre: './images/bg3.jpg',
-    image: './images/bg2.jpg',
+    image: './images/bg5.jpg',
   },
   'section6': {
-    pre: './images/bg1.jpg',
-    image: './images/bg3.jpg',
+    image: './images/bg6.jpg',
   },
 }
 
