@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import BackgroundSection from './components/BackgroundSection';
-import Projects from './components/Projects';
+import Sections from './components/Sections';
 
 const useStyles = makeStyles(theme => ({
   app: {
@@ -71,14 +71,14 @@ function usePrevious(value) {
 }
 function App() {
   const classes = useStyles();
-  const [selectedProjectIndex, setSelectedProjectIndex] = useState(undefined);
+  const [sectionIndex, setSectionIndex] = useState(undefined);
   return (
     <div className={classes.app}>
       <BackgroundSection
         className={classes.background}
-        selectedProjectIndex={selectedProjectIndex}
+        sectionIndex={sectionIndex}
       />
-      <Projects className={classes.projects} setSelectedProjectIndex={setSelectedProjectIndex} />
+      <Sections className={classes.projects} setSectionIndex={setSectionIndex} />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useRef, useCallback, useState } from 'react';
 import ScrollBar from './ScrollBar';
-import Project from './Project';
+import Section from './Section';
 
 const projectLists = [
   {
@@ -30,39 +30,39 @@ const projectLists = [
   },
 ]
 
-const Projects = props => {
+const Sections = props => {
   // const classes = useStyles();
   
-  const projectsRef = useRef(null);
+  const sectionsRef = useRef(null);
   const [currentTransform, setCurrentTransform] = useState(0);
   const onWheelEvent = useCallback((event) => {
     const { deltaY } = event;
-    projectsRef.current.scrollBy(deltaY, 0);
+    sectionsRef.current.scrollBy(deltaY, 0);
     setCurrentTransform((v) => {
       const newValue = v + deltaY;
       if (newValue < 0) {
         return 0;
       }
-      if (newValue > (projectsRef.current.clientWidth - 374)) {
-        return (projectsRef.current.clientWidth - 374);
+      if (newValue > (sectionsRef.current.clientWidth - 374)) {
+        return (sectionsRef.current.clientWidth - 374);
       }
       return newValue;
     });
-  }, [projectsRef]);
+  }, [sectionsRef]);
 
-  const { setSelectedProjectIndex } = props;
+  const { setSectionIndex } = props;
   const mouseOver = useCallback((current) => () => {
-    setSelectedProjectIndex(current.toString());
-  }, [setSelectedProjectIndex]);
+    setSectionIndex(current.toString());
+  }, [setSectionIndex]);
 
   const mouseOut = useCallback(() => {
-    setSelectedProjectIndex(undefined);
-  }, [setSelectedProjectIndex]);
+    setSectionIndex(undefined);
+  }, [setSectionIndex]);
 
   return (
-    <div ref={projectsRef} className={props.className} onWheel={onWheelEvent} >
+    <div ref={sectionsRef} className={props.className} onWheel={onWheelEvent} >
       {projectLists.map((each, index) => 
-        <Project
+        <Section
           key={`pro${index}`}
           mouseOut={mouseOut}
           mouseOver={mouseOver(index)}
@@ -75,4 +75,4 @@ const Projects = props => {
   );
 }
 
-export default Projects;
+export default Sections;

@@ -114,9 +114,9 @@ class BackgroundSection extends Component{
     this.start();
   }
   componentDidUpdate(prevProps) {
-    const { selectedProjectIndex } = prevProps;
-    if (!this.props.selectedProjectIndex) return;
-    if (selectedProjectIndex === this.props.selectedProjectIndex) return;
+    const { sectionIndex } = prevProps;
+    if (!this.props.sectionIndex) return;
+    if (sectionIndex === this.props.sectionIndex) return;
     if (this.currentProcess) {
       this.next().then(() => this.next());
     } else {
@@ -147,7 +147,7 @@ class BackgroundSection extends Component{
 
   next = async () => {
     if (this.currentProcess) return this.currentProcess;
-    const id = this.props.selectedProjectIndex;
+    const id = this.props.sectionIndex;
     this.mat.uniforms.nextImage.value = this.sliderImages[id];
     this.mat.uniforms.nextImage.needsUpdate = true;
     return this.currentProcess = new Promise((resolve, reject) => {
@@ -167,7 +167,7 @@ class BackgroundSection extends Component{
   }
 
   // previous = () => {
-  //   const id = parseInt(this.props.selectedProjectIndex, 10);
+  //   const id = parseInt(this.props.sectionIndex, 10);
   //   this.mat.uniforms.currentImage.value = this.sliderImages[id];
   //   this.mat.uniforms.currentImage.needsUpdate = true;
   //   TweenMax.to(this.mat.uniforms.dispFactor, speedOut, {
