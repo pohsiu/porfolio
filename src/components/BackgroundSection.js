@@ -15,7 +15,6 @@ const vertex = `
 
 const fragment = `
   varying vec2 vUv;
-
   uniform sampler2D currentImage;
   uniform sampler2D nextImage;
   uniform sampler2D disp;
@@ -23,29 +22,13 @@ const fragment = `
   uniform float effectFactor;
 
   void main() {
-
     vec2 uv = vUv;
-
-
-    // vec4 orig1 = texture2D(currentImage, uv);
-    // vec4 orig2 = texture2D(nextImage, uv);
-    
-    // _currentImage = texture2D(currentImage, vec2(uv.x, uv.y + dispFactor * (orig2 * intensity)));
-
-    // _nextImage = texture2D(nextImage, vec2(uv.x, uv.y + (1.0 - dispFactor) * (orig1 * intensity)));
-
-    // vec4 finalTexture = mix(_currentImage, _nextImage, dispFactor);
-
-    // gl_FragColor = finalTexture;
-
     vec4 disp = texture2D(disp, uv);
 
     vec2 distortedPosition = vec2(uv.x + dispFactor * (disp.r*effectFactor), uv.y);
     vec2 distortedPosition2 = vec2(uv.x - (1.0 - dispFactor) * (disp.r*effectFactor), uv.y);
-
     vec4 _currentImage = texture2D(currentImage, distortedPosition);
     vec4 _nextImage = texture2D(nextImage, distortedPosition2);
-
     vec4 finalTexture = mix(_currentImage, _nextImage, dispFactor);
 
     gl_FragColor = finalTexture;
@@ -53,7 +36,7 @@ const fragment = `
   }
 `;
 const speedIn = "1.2";
-const speedOut = "0.5";
+// const speedOut = "0.5";
 const easing = Expo.easeOut;
 const intensity = "0.6";
 const dispImage = "./images/displacement/6.jpg"
