@@ -125,7 +125,6 @@ class BackgroundSection extends Component{
     
   }
   componentWillUnmount(){
-    this.previous();
     this.stop();
     window.removeEventListener("resize", () => {} );
     this.mount.removeChild(this.renderer.domElement)

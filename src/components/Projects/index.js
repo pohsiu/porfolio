@@ -4,27 +4,27 @@ import Project from './Project';
 
 const projectLists = [
   {
-    title: "SpaceTime",
+    title: "About",
     subtitle: "Product",
     description: "We run a product that serves distributed teams",
   },
   {
-    title: "Blue Diamond",
+    title: "Projects",
     subtitle: "Platform Design",
     description: "We redesigned and rebuilt the Blue Diamond website from the ground-up.",
   },
   {
-    title: "SpaceTime",
+    title: "Skills",
     subtitle: "Product",
     description: "We run a product that serves distributed teams",
   },
   {
-    title: "SpaceTime",
+    title: "Open Source Modules",
     subtitle: "Product",
     description: "We run a product that serves distributed teams",
   },
   {
-    title: "SpaceTime",
+    title: "Experience",
     subtitle: "Product",
     description: "We run a product that serves distributed teams",
   },
