@@ -1,7 +1,12 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import BackgroundSection from './components/BackgroundSection';
-import Sections from './components/Sections';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Home from './pages/Home';
+import Experience from './pages/Experience';
+import About from './pages/About';
+import Skill from './pages/Skill';
+import OpenSource from './pages/OpenSource';
+import Project from './pages/Project';
 
 const useStyles = makeStyles(theme => ({
   app: {
@@ -12,73 +17,40 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     '--large-viewport': 1440,
   },
-  background: {
-    width: '100%',
-    display: 'flex',
-  },
-  projects: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    left: 0,
-    bottom: 0,
-    overflow: 'scroll',
-    display: 'flex',
-    flexDirection: 'row',
-    marginBottom: -15,
-    cursor: 'none',
-  },
 }));
 
-const projectMap = {
-  'section1': {
-    image: './images/bg1.jpg',
-  },
-  'section2': {
-    image: './images/bg2.jpg',
-  },
-  'section3': {
-    image: './images/bg3.jpg',
-  },
-  'section4': {
-    image: './images/bg4.jpg',
-  },
-  'section5': {
-    image: './images/bg5.jpg',
-  },
-  'section6': {
-    image: './images/bg6.jpg',
-  },
-}
-
-const projects = [
-  'section1', 'section2', 'section3', 'section4', 'section5', 'section6'
-]
-
-
-function usePrevious(value) {
-  // The ref object is a generic container whose current property is mutable ...
-  // ... and can hold any value, similar to an instance property on a class
-  const ref = useRef();
+// function usePrevious(value) {
+//   // The ref object is a generic container whose current property is mutable ...
+//   // ... and can hold any value, similar to an instance property on a class
+//   const ref = useRef();
   
-  // Store current value in ref
-  useEffect(() => {
-    ref.current = value;
-  }, [value]); // Only re-run if value changes
+//   // Store current value in ref
+//   useEffect(() => {
+//     ref.current = value;
+//   }, [value]); // Only re-run if value changes
   
-  // Return previous value (happens before update in useEffect above)
-  return ref.current;
+//   // Return previous value (happens before update in useEffect above)
+//   return ref.current;
+// }
+
+function AppRouter() {
+  return (
+    <Router>
+      <Route path="/" exact component={Home} />
+      <Route path="/about/" component={About} />
+      <Route path="/skill/" component={Skill} />
+      <Route path="/experience/" component={Experience} />
+      <Route path="/project/" component={Project} />
+      <Route path="/opensource/" component={OpenSource} />
+      {/* <Route component={Home} /> */}
+    </Router>
+  )
 }
 function App() {
   const classes = useStyles();
-  const [sectionIndex, setSectionIndex] = useState(undefined);
   return (
     <div className={classes.app}>
-      <BackgroundSection
-        className={classes.background}
-        sectionIndex={sectionIndex}
-      />
-      <Sections className={classes.projects} setSectionIndex={setSectionIndex} />
+      <AppRouter />
     </div>
   );
 }

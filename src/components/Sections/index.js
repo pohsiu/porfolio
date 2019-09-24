@@ -1,32 +1,39 @@
 import React, { useRef, useCallback, useState } from 'react';
 import ScrollBar from './ScrollBar';
 import Section from './Section';
+import { Link } from "react-router-dom";
 
-const projectLists = [
+const sectionLists = [
   {
     title: "About",
-    subtitle: "Product",
+    subtitle: "Explore More",
     description: "We run a product that serves distributed teams",
+    pageUrl: "/about/",
   },
   {
-    title: "Projects",
-    subtitle: "Platform Design",
-    description: "We redesigned and rebuilt the Blue Diamond website from the ground-up.",
-  },
-  {
-    title: "Skills",
+    title: "Skill",
     subtitle: "Product",
     description: "We run a product that serves distributed teams",
+    pageUrl: "/skill/",
   },
-  {
-    title: "Open Source Modules",
-    subtitle: "Product",
-    description: "We run a product that serves distributed teams",
-  },
+  
   {
     title: "Experience",
     subtitle: "Product",
     description: "We run a product that serves distributed teams",
+    pageUrl: "/experiences/",
+  },
+  {
+    title: "Project",
+    subtitle: "Platform Design",
+    description: "We redesigned and rebuilt the Blue Diamond website from the ground-up.",
+    pageUrl: "/project/",
+  },
+  {
+    title: "Open Source Module",
+    subtitle: "Product",
+    description: "We run a product that serves distributed teams",
+    pageUrl: "/opensource/",
   },
 ]
 
@@ -61,15 +68,18 @@ const Sections = props => {
 
   return (
     <div ref={sectionsRef} className={props.className} onWheel={onWheelEvent} >
-      {projectLists.map((each, index) => 
-        <Section
-          key={`pro${index}`}
-          mouseOut={mouseOut}
-          mouseOver={mouseOver(index)}
-          title={each.title}
-          subtitle={each.subtitle}
-          description={each.description}
-        />)}
+      {sectionLists.map((each, index) => 
+        <Link to={each.pageUrl}>
+          <Section
+            key={`pro${index}`}
+            mouseOut={mouseOut}
+            mouseOver={mouseOver(index)}
+            title={each.title}
+            subtitle={each.subtitle}
+            description={each.description}
+          />
+        </Link>
+      )}
       <ScrollBar style={{ transform: `translateX(${currentTransform}px)`, width: 374 }}/>
     </div>
   );
