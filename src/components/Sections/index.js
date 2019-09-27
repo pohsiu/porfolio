@@ -1,7 +1,7 @@
 import React, { useRef, useCallback, useState } from 'react';
 import ScrollBar from './ScrollBar';
 import Section from './Section';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const sectionLists = [
   {
@@ -69,17 +69,15 @@ const Sections = props => {
   return (
     <div ref={sectionsRef} className={props.className} onWheel={onWheelEvent} >
       {sectionLists.map((each, index) => 
-        // <Link to={each.pageUrl} key={`pro${index}`}>
-          <Section
-            key={`pro${index}`}
-            url={each.pageUrl}
-            mouseOut={mouseOut}
-            mouseOver={mouseOver(index)}
-            title={each.title}
-            subtitle={each.subtitle}
-            description={each.description}
-          />
-        // </Link>
+        <Section
+          key={`pro${index}`}
+          url={each.pageUrl}
+          mouseOut={mouseOut}
+          mouseOver={mouseOver(index)}
+          title={each.title}
+          subtitle={each.subtitle}
+          description={each.description}
+        />
       )}
       <ScrollBar style={{ transform: `translateX(${currentTransform}px)`, width: 374 }}/>
     </div>
