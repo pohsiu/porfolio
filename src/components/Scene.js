@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import * as THREE from 'three';
 import { TweenMax, Expo } from 'gsap';
+import getImgPath from '../utils/getImgPath';
+const imgPath = getImgPath();
 
 const vertex = `
   varying vec2 vUv;
@@ -55,7 +57,7 @@ const speedIn = "1.2";
 const speedOut = "0.5";
 const easing = Expo.easeOut;
 const intensity = "0.6";
-const dispImage = "./images/displacement/6.jpg"
+const dispImage = `${imgPath}/displacement/6.jpg`;
 
 class ThreeScene extends Component{
   componentDidMount(){

@@ -21,7 +21,7 @@ const sectionLists = [
     title: "Experience",
     subtitle: "Product",
     description: "We run a product that serves distributed teams",
-    pageUrl: "/experiences/",
+    pageUrl: "/experience/",
   },
   {
     title: "Project",
@@ -69,16 +69,17 @@ const Sections = props => {
   return (
     <div ref={sectionsRef} className={props.className} onWheel={onWheelEvent} >
       {sectionLists.map((each, index) => 
-        <Link to={each.pageUrl}>
+        // <Link to={each.pageUrl} key={`pro${index}`}>
           <Section
             key={`pro${index}`}
+            url={each.pageUrl}
             mouseOut={mouseOut}
             mouseOver={mouseOver(index)}
             title={each.title}
             subtitle={each.subtitle}
             description={each.description}
           />
-        </Link>
+        // </Link>
       )}
       <ScrollBar style={{ transform: `translateX(${currentTransform}px)`, width: 374 }}/>
     </div>

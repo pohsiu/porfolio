@@ -28,8 +28,8 @@ const LandingPage = (props) => {
   return (
     <React.Fragment>
       <BackgroundSection
-      className={classes.background}
-      sectionIndex={sectionIndex}
+        className={classes.background}
+        sectionIndex={sectionIndex}
       />
       <Sections className={classes.projects} setSectionIndex={setSectionIndex} />
     </React.Fragment>

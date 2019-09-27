@@ -1,15 +1,46 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Scene from '../../components/Scene';
+import getImgPath from '../../utils/getImgPath';
+
+const imgPath = getImgPath();
 
 const useStyles = makeStyles(theme => ({
+  app: {
+    display: 'flex',
+    flex: 1,
+    width: '100%',
+    height: '100vh',
+    position: 'relative',
+    '--large-viewport': 1440,
+    flexDirection: 'column',
+    overflow: 'auto',
+  },
+  background: {
+    height: '100%',
+    display: 'flex',
+    flexShrink: 0,
+  },
+  content: {
+  },
 }));
-
+const imgs = [
+  `${imgPath}/bg2.jpg`,
+  `${imgPath}/bg2.jpg`,
+]
 const Skill = (props) => {
   const classes = useStyles();
   return (
-    <React.Fragment>
-      <div>Skill</div>
-    </React.Fragment>
+    <div className={classes.app}>
+      <Scene 
+        image1={imgs[0]} 
+        image2={imgs[1]}
+        className={classes.background}
+      />
+      <div className={classes.content}>
+        Skill
+      </div>
+    </div>
   );
 }
 
