@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     height: '100%',
     width: '40%',
-    minWidth: '35rem',
+    minWidth: '40rem',
     transition: 'opacity .2s ease-in-out, background .2s ease-in-out',
     whiteSpace: 'normal',
     overflow: 'hidden',
@@ -23,8 +23,8 @@ const useStyles = makeStyles(theme => ({
     padding: '0 4.5rem 8rem',
   },
   projectIsHover: {
-    borderLeft: '0.2px #9da7b3 solid',
-    borderRight: '0.2px #9da7b3 solid',
+    borderLeft: '0.5px #9da7b3 solid',
+    borderRight: '0.5px #9da7b3 solid',
   },
   projectLink: {
     display: 'flex',
