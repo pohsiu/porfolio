@@ -43,9 +43,10 @@ const Sections = props => {
   const sectionsRef = useRef(null);
   const [currentTransform, setCurrentTransform] = useState(0);
   const onWheelEvent = useCallback((event) => {
-    const { deltaY } = event;
-    sectionsRef.current.scrollBy(deltaY, 0);
-    const delta = deltaY * (sectionsRef.current.clientWidth - 374) / sectionsRef.current.clientHeight;
+    const { deltaY, deltaX } = event;
+    const useDelta = deltaY !== 0 ? deltaY : deltaX;
+    sectionsRef.current.scrollBy(useDelta, 0);
+    const delta = useDelta * (sectionsRef.current.clientWidth - 374) / sectionsRef.current.clientHeight;
     setCurrentTransform((v) => {
       const newValue = v + delta;
       if (newValue < 0) {
