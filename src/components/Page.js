@@ -65,7 +65,18 @@ const useStyles = makeStyles(({ palette }) => ({
     height: 1000,
     paddingTop: 24,
   },
-
+  workType: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    marginBottom: '5rem',
+    paddingBottom: '4rem',
+    textAlign: 'right',
+    listStyleType: 'none',
+    lineHeight: 2,
+    borderBottom: '1px solid #ffffff',
+    fontSize: '.88rem',
+  }
 }));
 
 const Page = (props) => {
@@ -77,6 +88,10 @@ const Page = (props) => {
         <div className={clsx(classes.heroFixed, parallaxClass)} style={{ display: 'block' }}>
           <div className={clsx(classes.heroWrap, titleClass)}>
             <h1>{props.title}</h1>
+            <ul className={classes.workType}>
+              <li><span>{props.SpanTitle || 'Product'}</span></li>
+              <li><span>{props.SpanDetail || 'Internal Venture'}</span></li>
+            </ul>
           </div>
         </div>
         <div className={clsx(classes.outer, outerClass)}>
