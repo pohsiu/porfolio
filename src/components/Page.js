@@ -50,6 +50,7 @@ const useStyles = makeStyles(({ palette }) => ({
     width: '100%',
     margin: '0 auto',
     maxWidth: 1440,
+    verticalAlign: 'baseline',
   },
   filledTop: {
     position: 'relative',

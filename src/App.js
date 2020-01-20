@@ -41,7 +41,6 @@ function AppRouter() {
       <Route path="/experience/" component={Experience} />
       <Route path="/project/" component={Project} />
       <Route path="/opensource/" component={OpenSource} />
-      {/* <Route component={Home} /> */}
     </Router>
   )
 }

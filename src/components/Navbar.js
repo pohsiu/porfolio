@@ -1,12 +1,28 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import HomeIcon from '@material-ui/icons/Home';
 
 const useStyles = makeStyles(theme => ({
   navRoot: {
-
+    minHeight: '6.5rem',
+    display: 'flex',
+    flexDirection: 'row',
+    paddingLeft: 48,
+  },
+  navWrapper: {
+    zIndex: 100,
+    display: 'flex',
+    alignItems: 'flex-end',
   },
   logoHome: {
-
+    display: 'flex',
+    width: '2.5rem',
+    height: '2.5rem',
+    alignItems: 'center',
+    justifyContent: 'center',
+    cursor: 'pointer',
+    border: '2px solid #ffffff',
+    color: '#ffffff',
   },
   navItems: {
     display: 'flex',
@@ -32,9 +48,16 @@ const useStyles = makeStyles(theme => ({
     color: '#fff',
     textDecoration: 'none',
     overflow: 'hidden',
+    cursor: 'pointer',
+    transition: 'transform .2s cubic-bezier(.59,.11,.64,1.38)',
+    '&:hover': {
+      // TODO: add hover effect
+      transform: 'translateY(-50%)',
+    },
+  },
+  navLinkBg: {
   },
   navEffect: {
-
   },
 }))
 
@@ -47,6 +70,7 @@ const NavItem = (props) => {
           {props.children}
         </span>
       </a>
+      
     </li>
   )
 }
@@ -54,14 +78,18 @@ const Navbar = (props) => {
   const classes = useStyles();
   return (
     <nav className={classes.navRoot} {...props}>
-      <a className={classes.logoHome} href='/'>
-        H
-      </a>
-      <ul className={classes.navItems}>
-        <NavItem>Project</NavItem>
-        <NavItem>Skill</NavItem>
-        <NavItem>Open Source</NavItem>
-      </ul>
+      <div className={classes.navWrapper}>
+        <a className={classes.logoHome} href='/'>
+          <HomeIcon />
+        </a>
+        <ul className={classes.navItems}>
+          <NavItem href='/about/'>About</NavItem>
+          <NavItem href='/skill/'>Skill</NavItem>
+          <NavItem href='/project/'>Project</NavItem>
+          <NavItem href='/experience'>Experience</NavItem>
+          <NavItem href='/opensource'>Open Source</NavItem>
+        </ul>
+      </div>
     </nav>
   )
 }
