@@ -24,7 +24,10 @@ export default createMuiTheme({
       main: '#fafafa',
     },
     secondary: {
-      main: '#000',
+      main: '#ffffff',
+    },
+    background: {
+      main: '#2a2f36',
     }
   },
 });
