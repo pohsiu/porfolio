@@ -57,6 +57,12 @@ const useStyles = makeStyles(theme => ({
     height: '100%',
     transition: 'filter .5s cubic-bezier(1,0,0,1) .5s,transform .5s cubic-bezier(1,0,0,1) .5s,-webkit-filter .5s cubic-bezier(1,0,0,1) .5s,-webkit-transform .5s cubic-bezier(1,0,0,1) .5s',
   },
+  visualContainer: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    backgroundImage: 'radial-gradient(circle farthest-corner at 38% 0,#ffb8b8 32%,#ff9191 90%)',
+  },
   heroWrap: {
     display: 'flex',
     position: 'relative',
@@ -71,7 +77,7 @@ const useStyles = makeStyles(theme => ({
   outer: {
     position: 'relative',
     zIndex: 1,
-    overflowX: 'auto',
+    overflowX: 'hidden',
     background: 'linear-gradient(transparent,transparent 100vh,#2a2f36 100.001vh,#2a2f36)'
   },
   outerContainer: {
@@ -88,12 +94,11 @@ const useStyles = makeStyles(theme => ({
     transform: 'translateX(-50%)',
   },
   fullWidth: {
-    display: 'block',
     width: '100%',
     margin: '0 auto',
     maxWidth: 1440,
     height: 1000,
-    overflowY: 'auto',
+    scrollbarColor: 'yellow blue',
   },
 
 }));
@@ -108,7 +113,11 @@ const About = (props) => {
     <div className={classes.app}>
       <div className={classes.tlWrapper} style={{ zIndex: 1, opacity: 1 }}>
         <div className={classes.heroFixed} style={{ display: 'block', backgroundColor: 'rgb(255, 145, 145)'}}>
-          <div className={classes.heroVisual} />
+          <div className={classes.heroVisual}>
+            <div className={classes.visualContainer}>
+              
+            </div>
+          </div>
           <div className={classes.heroWrap}>
             <h1>About Me</h1>
           </div>
