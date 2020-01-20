@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
-
+// TODO: put reused navbar in here
 const useStyles = makeStyles(({ palette }) => ({
   root: {
     display: 'block',

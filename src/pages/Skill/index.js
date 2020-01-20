@@ -1,46 +1,21 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Scene from '../../components/Scene';
+import Page from '../../components/Page';
 import getImgPath from '../../utils/getImgPath';
-
-const imgPath = getImgPath();
-
 const useStyles = makeStyles(theme => ({
-  app: {
-    display: 'flex',
-    flex: 1,
-    width: '100%',
-    height: '100vh',
-    position: 'relative',
-    '--large-viewport': 1440,
-    flexDirection: 'column',
-    overflow: 'auto',
+  parallaxClass: {
+    backgroundImage: `url(${getImgPath()}/bg4.jpg)`,
   },
-  background: {
-    height: '100%',
-    display: 'flex',
-    flexShrink: 0,
-  },
-  content: {
+  titleClass: {
+    // color: theme.palette.secondary.main,
   },
 }));
-const imgs = [
-  `${imgPath}/bg2.jpg`,
-  `${imgPath}/bg2.jpg`,
-]
 const Skill = (props) => {
   const classes = useStyles();
   return (
-    <div className={classes.app}>
-      <Scene 
-        image1={imgs[0]} 
-        image2={imgs[1]}
-        className={classes.background}
-      />
-      <div className={classes.content}>
-        Skill
-      </div>
-    </div>
+    <Page title="Skill" parallaxClass={classes.parallaxClass} titleClass={classes.titleClass}>
+      <div>This is Skill content Below</div>
+    </Page>
   );
 }
 
