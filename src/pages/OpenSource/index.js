@@ -4,7 +4,7 @@ import Page from '../../components/Page';
 import getImgPath from '../../utils/getImgPath';
 const useStyles = makeStyles(theme => ({
   parallaxClass: {
-    backgroundImage: `url(${getImgPath()}/bg3.jpg)`,
+    backgroundImage: `url(${getImgPath()}/bg5.jpg)`,
   },
 }));
 
