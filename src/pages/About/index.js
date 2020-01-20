@@ -6,37 +6,20 @@ import getImgPath from '../../utils/getImgPath';
 const imgPath = getImgPath();
 
 const useStyles = makeStyles(theme => ({
-  app: {
+  root: {
     display: 'block',
     // flex: 1,
     width: '100%',
     // height: '100vh',
     position: 'relative',
-    '--large-viewport': 1440,
     // flexDirection: 'column',
     overflow: 'auto',
-  },
-  background: {
-    
-  },
-  parallex: {
-    minHeight: '100vh',
-    // display: 'table',
-    /* Create the parallax scrolling effect */
-    backgroundImage: `url(${imgPath}/bg1.jpg)`,
-    backgroundAttachment: 'fixed',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    backgroundColor: 'transparent',
-  },
-  content: {
-    height: 1000,
   },
   tlWrapper: {
     width: '100%',
     float: 'left',
     position: 'relative',
+    background: '#2a2f36',
   },
   heroFixed: {
     opacity: 1,
@@ -47,7 +30,8 @@ const useStyles = makeStyles(theme => ({
     marginLeft: '50%',
     zIndex: 1,
     transform: 'translateX(-50%)',
-    width: '100vw',
+    width: 'calc(100vw - 36px)',
+    backgroundColor: 'rgb(255, 145, 145)',
   },
   heroVisual: {
     filter: 'blur(0)',
@@ -98,7 +82,6 @@ const useStyles = makeStyles(theme => ({
     margin: '0 auto',
     maxWidth: 1440,
     height: 1000,
-    scrollbarColor: 'yellow blue',
   },
 
 }));
@@ -110,9 +93,9 @@ const imgs = [
 const About = (props) => {
   const classes = useStyles();
   return (
-    <div className={classes.app}>
+    <div className={classes.root}>
       <div className={classes.tlWrapper} style={{ zIndex: 1, opacity: 1 }}>
-        <div className={classes.heroFixed} style={{ display: 'block', backgroundColor: 'rgb(255, 145, 145)'}}>
+        <div className={classes.heroFixed} style={{ display: 'block' }}>
           <div className={classes.heroVisual}>
             <div className={classes.visualContainer}>
               

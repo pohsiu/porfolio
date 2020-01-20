@@ -15,7 +15,6 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     height: '100vh',
     position: 'relative',
-    '--large-viewport': 1440,
   },
 }));
 
