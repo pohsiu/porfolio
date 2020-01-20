@@ -69,6 +69,7 @@ const useStyles = makeStyles(({ palette }) => ({
   workType: {
     position: 'absolute',
     bottom: 0,
+    right: 24,
     width: '100%',
     marginBottom: '5rem',
     paddingBottom: '4rem',
