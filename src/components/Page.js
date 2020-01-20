@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
+import Navbar from './Navbar';
 // TODO: put reused navbar in here
 const useStyles = makeStyles(({ palette }) => ({
   root: {
@@ -96,7 +97,7 @@ const Page = (props) => {
         </div>
         <div className={clsx(classes.outer, outerClass)}>
           <div className={classes.outerContainer}>
-            <nav>NAV BAR</nav>
+            <Navbar />
             <div style={{ opacity: 1 }}>
               <div className={classes.filledTop} />
               <div className={classes.pageContent}>
