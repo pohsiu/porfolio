@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
   },
   detail: {
     boxSizing: 'border-box',
-    maxWidth: '50%',
+    width: '50%',
     paddingRight: '5%',
     lineHeight: 2,
   },
@@ -60,8 +60,8 @@ const ContentSecion = (props) => {
       <div>
         <Typography className={classes.position} variant="h3" color={'Secondary'} >{position}</Typography>
         <div className={classes.rowDiv}>
-          {details && details.map((detail, index) => 
-            (<Typography key={index.toString()} className={classes.detail} variant="body2" color={'Secondary'} >{detail}</Typography>
+          {details && details.map(({ text }, index) => 
+            (<Typography key={index.toString()} className={classes.detail} variant="body2" color={'Secondary'} >{text}</Typography>
           ))}
         </div>
       </div>
@@ -80,15 +80,15 @@ const About = (props) => {
             period={'From 2017 to present'}
             position={'Dimension Eight Artificial Intelligence, Software Engineer'}
             details={[
-              'Companies everywhere are realizing the benefit of being able to provide a flexible work environment and source employees from anywhere. Many tech companies, such as InVision, Buffer, Customer.io, and Zapier boast fully remote teams, with more companies joining this group every day.',
-              'Dimension Eight Artificial Intelligence, Software Engineer']}
+              { text: 'Companies everywhere are realizing the benefit of being able to provide a flexible work environment and source employees from anywhere. Many tech companies, such as InVision, Buffer, Customer.io, and Zapier boast fully remote teams, with more companies joining this group every day.' },
+              { text: 'Dimension Eight Artificial Intelligence, Software Engineer' }]}
           />
           <ContentSecion
             period={'From 2016 to 2017'}
             position={'Substitude Military Service'}
             details={[
-              'Implement a website for meal ordering purpose aim to hhahahahahahah Implement a website for meal ordering purpose aim to hhahahahahahah Implement a website for meal ordering purpose aim to hhahahahahahah',
-              '50+ users/day']}
+              { text: 'Implement a website for meal ordering purpose aim to hhahahahahahah Implement a website for meal ordering purpose aim to hhahahahahahah Implement a website for meal ordering purpose aim to hhahahahahahah' },
+              { text: '50+ users/day'}]}
           />
           <ContentSecion
             period={'From 2014 to 2016'}
@@ -96,15 +96,21 @@ const About = (props) => {
             // details={['Paper, R, php Oracle']}
           />
           <ContentSecion
-            period={'From 2010 to 2014'}
-            position={'NUK, Information Management, Bachelor'}
-            details={['NUK, Information Management, Bachelor, Android, php+mysql']}
-          />
-          <ContentSecion
             period={'From 2014/7 to 2014/12'}
             position={'Institute For Information Industry, Digital Service Innovation Lab, Intern'}
-            details={['python crawler']}
+            details={[
+              { text: 'Implement a crawler to fetch amazon website product details, customer reviews with python. Automize weekly report with php, replacing the manual way of serveral steps.'},
+              { text: 'Python, php, MySQL'}
+            ]}
           />
+          <ContentSecion
+            period={'From 2010 to 2014'}
+            position={'NUK, Information Management, Bachelor'}
+            details={[
+              { text: 'Award:' },
+              { text: 'Award:' }]}
+          />
+          
         </div>
         <div>
           <div>Resume</div>
