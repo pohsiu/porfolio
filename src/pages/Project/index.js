@@ -6,15 +6,12 @@ const useStyles = makeStyles(theme => ({
   parallaxClass: {
     backgroundImage: `url(${getImgPath()}/bg4.jpg)`,
   },
-  titleClass: {
-    // color: theme.palette.secondary.main,
-  },
 }));
 
 const Project = (props) => {
   const classes = useStyles();
   return (
-    <Page title="Project" parallaxClass={classes.parallaxClass} titleClass={classes.titleClass}>
+    <Page title="Project" parallaxClass={classes.parallaxClass}>
       <div>This is Project content Below</div>
     </Page>
   );

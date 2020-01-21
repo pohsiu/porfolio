@@ -65,7 +65,7 @@ const useStyles = makeStyles(({ palette }) => ({
     width: '100%',
     margin: '0 auto',
     maxWidth: 1440,
-    height: 1000,
+    minHeight: 800,
     paddingTop: 24,
   },
   workType: {
@@ -111,7 +111,7 @@ const Page = (props) => {
           <div className={clsx(classes.heroWrap, titleClass)}>
             <div className={classes.titleContainer}>
               <BGIcon className={classes.BGIcon} />
-              <h1 className={classes.title}>{props.title}</h1>
+              <h1 className={clsx(classes.title, titleClass)}>{props.title}</h1>
             </div>
             <ul className={classes.workType}>
               <li><span>{props.SpanTitle || 'Product'}</span></li>
