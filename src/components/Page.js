@@ -78,7 +78,7 @@ const useStyles = makeStyles(({ palette }) => ({
     textAlign: 'right',
     listStyleType: 'none',
     lineHeight: 2,
-    borderBottom: '1px solid #ffffff',
+    borderBottom: `1px solid ${palette.secondary.main}`,
     fontSize: '.88rem',
   },
   titleContainer: {
@@ -95,7 +95,7 @@ const useStyles = makeStyles(({ palette }) => ({
     fontStyle: 'italic',
   },
   BGIcon: {
-    color: '#ffffff',
+    color: palette.secondary.main,
     width: 320,
     height: 320,
   },
