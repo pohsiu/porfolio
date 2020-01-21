@@ -92,6 +92,7 @@ const useStyles = makeStyles(({ palette }) => ({
     color: '#000',
     width: '100%',
     textAlign: 'center',
+    fontStyle: 'italic',
   },
   BGIcon: {
     color: '#ffffff',

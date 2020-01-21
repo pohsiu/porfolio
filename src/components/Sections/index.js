@@ -11,17 +11,16 @@ const sectionLists = [
     pageUrl: "/about/",
   },
   {
-    title: "Skill",
-    subtitle: "Product",
-    description: "We run a product that serves distributed teams",
-    pageUrl: "/skill/",
-  },
-  
-  {
     title: "Experience",
     subtitle: "Product",
     description: "We run a product that serves distributed teams",
     pageUrl: "/experience/",
+  },
+  {
+    title: "Skill",
+    subtitle: "Product",
+    description: "We run a product that serves distributed teams",
+    pageUrl: "/skill/",
   },
   {
     title: "Project",
