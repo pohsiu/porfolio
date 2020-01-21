@@ -42,6 +42,7 @@ const useStyles = makeStyles(theme => ({
     width: '50%',
     paddingRight: '5%',
     lineHeight: 2,
+    whiteSpace: 'pre-line',
   },
   position: {
     lineHeight: 1.25,
@@ -99,8 +100,8 @@ const About = (props) => {
             period={'From 2014/7 to 2014/12'}
             position={'Institute For Information Industry, Digital Service Innovation Lab, Intern'}
             details={[
-              { text: 'Implement a crawler to fetch amazon website product details, customer reviews with python. Automize weekly report with php, replacing the manual way of serveral steps.'},
-              { text: 'Python, php, MySQL'}
+              { text: 'Implement a crawler to fetch amazon website product details, customer reviews and prices etc. with python. \n Automize weekly report with php, replacing the manual way of serveral steps.'},
+              { text: 'python, php, MySQL'}
             ]}
           />
           <ContentSecion
