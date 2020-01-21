@@ -36,6 +36,12 @@ const useStyles = makeStyles(theme => ({
   navItem: {
     position: 'relative',
     padding: '0 2.25rem',
+    cursor: 'pointer',
+    transition: 'transform .2s cubic-bezier(.59,.11,.64,1.38)',
+    '&:hover': {
+      // TODO: add hover effect
+      transform: 'translateY(-30%)',
+    },
   },
   navLink: {
     display: 'inline-block',
@@ -49,11 +55,6 @@ const useStyles = makeStyles(theme => ({
     textDecoration: 'none',
     overflow: 'hidden',
     cursor: 'pointer',
-    transition: 'transform .2s cubic-bezier(.59,.11,.64,1.38)',
-    '&:hover': {
-      // TODO: add hover effect
-      transform: 'translateY(-50%)',
-    },
   },
   navLinkBg: {
   },
