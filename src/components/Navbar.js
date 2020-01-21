@@ -84,7 +84,6 @@ const Navbar = (props) => {
         </a>
         <ul className={classes.navItems}>
           <NavItem href='/about/'>About</NavItem>
-          <NavItem href='/experience'>Experience</NavItem>
           <NavItem href='/skill/'>Skill</NavItem>
           <NavItem href='/project/'>Project</NavItem>
           <NavItem href='/opensource'>Open Source</NavItem>

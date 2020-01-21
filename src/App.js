@@ -38,7 +38,6 @@ function AppRouter() {
       <Route path="/" exact component={Home} />
       <Route path="/about/" component={About} />
       <Route path="/skill/" component={Skill} />
-      <Route path="/experience/" component={Experience} />
       <Route path="/project/" component={Project} />
       <Route path="/opensource/" component={OpenSource} />
     </Router>
