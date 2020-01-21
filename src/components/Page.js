@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
+import BGIcon from './Svgs/BGIcon';
 import Navbar from './Navbar';
 // TODO: put reused navbar in here
 const useStyles = makeStyles(({ palette }) => ({
@@ -79,7 +80,24 @@ const useStyles = makeStyles(({ palette }) => ({
     lineHeight: 2,
     borderBottom: '1px solid #ffffff',
     fontSize: '.88rem',
-  }
+  },
+  titleContainer: {
+    position: 'relative',
+  },
+  title: {
+    position: 'absolute',
+    top: '6.5rem',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    color: '#000',
+    width: '100%',
+    textAlign: 'center',
+  },
+  BGIcon: {
+    color: '#ffffff',
+    width: 320,
+    height: 320,
+  },
 }));
 
 const Page = (props) => {
@@ -90,7 +108,10 @@ const Page = (props) => {
       <div className={classes.tlWrapper} style={{ zIndex: 1, opacity: 1 }}>
         <div className={clsx(classes.heroFixed, parallaxClass)} style={{ display: 'block' }}>
           <div className={clsx(classes.heroWrap, titleClass)}>
-            <h1>{props.title}</h1>
+            <div className={classes.titleContainer}>
+              <BGIcon className={classes.BGIcon} />
+              <h1 className={classes.title}>{props.title}</h1>
+            </div>
             <ul className={classes.workType}>
               <li><span>{props.SpanTitle || 'Product'}</span></li>
               <li><span>{props.SpanDetail || 'Internal Venture'}</span></li>
