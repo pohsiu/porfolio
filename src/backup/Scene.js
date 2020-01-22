@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import * as THREE from 'three';
 import { TweenMax, Expo } from 'gsap';
-import getImgPath from '../utils/getImgPath';
-const imgPath = getImgPath();
+import getPath from '../utils/getPath';
+const imgPath = getPath('images');
 
 const vertex = `
   varying vec2 vUv;

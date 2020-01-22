@@ -3,4 +3,4 @@ import path from 'path';
 
 const appRoot = appRootPath.resolve('./');
 
-export default () => path.join(appRoot, 'images');
+export default (dir) => path.join(appRoot, dir);

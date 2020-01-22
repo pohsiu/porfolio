@@ -1,10 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Page from '../../components/Page';
-import getImgPath from '../../utils/getImgPath';
+import getPath from '../../utils/getPath';
 const useStyles = makeStyles(theme => ({
   parallaxClass: {
-    backgroundImage: `url(${getImgPath()}/bg3.jpg)`,
+    backgroundImage: `url(${getPath('images')}/bg3.jpg)`,
   },
 }));
 const Skill = (props) => {
