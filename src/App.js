@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from './pages/Home';
-import Experience from './pages/Experience';
 import About from './pages/About';
 import Skill from './pages/Skill';
 import OpenSource from './pages/OpenSource';
