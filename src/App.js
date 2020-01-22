@@ -1,6 +1,6 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from './pages/Home';
 import About from './pages/About';
 import Skill from './pages/Skill';
