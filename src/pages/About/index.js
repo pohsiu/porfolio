@@ -1,11 +1,18 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useCallback } from 'react';
+import { makeStyles, lighten } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import clsx from 'clsx';
 import Page from '../../components/Page';
-import getImgPath from '../../utils/getImgPath';
+import getPath from '../../utils/getPath';
+import IconButton from '@material-ui/core/IconButton';
+import Resume from '../../components/Svgs/Resume';
+import Medium from '../../components/Svgs/Medium';
+import LinkedIn from '../../components/Svgs/LinkedIn';
+import Github from '../../components/Svgs/Github';
+
 const useStyles = makeStyles(theme => ({
   parallaxClass: {
-    backgroundImage: `url(${getImgPath()}/bg1.jpg)`,
+    backgroundImage: `url(${getPath('images')}/bg1.jpg)`,
   },
   pageContent: {
     display: 'flex',
@@ -22,6 +29,7 @@ const useStyles = makeStyles(theme => ({
   columnDiv: {
     display: 'flex',
     flexDirection: 'column',
+    flex: 1,
   },
   rowsDiv: {
     borderBottom: '1px solid #3c434d',
@@ -48,37 +56,53 @@ const useStyles = makeStyles(theme => ({
     lineHeight: 2,
     whiteSpace: 'pre-line',
   },
+  extraDetial: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   position: {
     lineHeight: 1.25,
+  },
+  iconDiv: {
+    backgroundColor: theme.palette.secondary.main,
+    '&:hover': {
+      backgroundColor: lighten(theme.palette.icon.main, 0.7),
+    }
+  },
+  icon: {
+    width: 48,
+    height: 48,
+    color: theme.palette.icon.main,
   }
 }));
 
-const ContentSecion = (props) => {
+const ContentSection = (props) => {
   const classes = useStyles();
   const { details, position, period, isFirst, ...others } = props;
   return (
     <div className={classes.sectionDiv} {...others}>
       <div>
-        {isFirst && <Typography variant="body2" color={'Secondary'} gutterBottom>Experience</Typography>}
-        <Typography variant="body2" color={'Secondary'} gutterBottom>{period}</Typography>
+        {isFirst && <Typography variant="body2" color={'secondary'} gutterBottom>Experience</Typography>}
+        <Typography variant="body2" color={'secondary'} gutterBottom>{period}</Typography>
       </div>
       <div>
-        <Typography className={classes.position} variant="h3" color={'Secondary'} >{position}</Typography>
+        <Typography className={classes.position} variant="h3" color={'secondary'} >{position}</Typography>
         <div className={classes.rowsDiv}>
           
           {details && details.map(({ text, withRight, title, description }, index) => 
             {
               if(withRight) {
                 return (
-                  <div className={classes.rowDiv}>
-                    <Typography className={classes.detail} variant="body2" color={'Secondary'} >
+                  <div className={classes.rowDiv} key={index.toString()}>
+                    <Typography className={classes.detail} variant="body2" color={'secondary'} >
                       {text}
                     </Typography>
                     <div className={classes.detail} >
-                      <Typography variant="h3" color={'Secondary'}>
+                      <Typography variant="h3" color={'secondary'}>
                         {title}
                       </Typography>
-                      <Typography variant="body2" color={'Secondary'} style={{ marginTop: 12, color: 'rgba(255, 255, 255, 0.6)' }}>
+                      <Typography variant="body2" color={'secondary'} style={{ marginTop: 12, color: 'rgba(255, 255, 255, 0.6)' }}>
                         {description}
                       </Typography>
                     </div>
@@ -86,8 +110,8 @@ const ContentSecion = (props) => {
                 )
               }
               return (
-                <div className={classes.rowDiv} ket={index.toString()}>
-                  <Typography className={classes.detail} variant="body2" color={'Secondary'} >
+                <div className={classes.rowDiv} key={index.toString()}>
+                  <Typography className={classes.detail} variant="body2" color={'secondary'} >
                     {text}
                   </Typography>
                 </div>)
@@ -101,6 +125,7 @@ const ContentSecion = (props) => {
 
 const About = (props) => {
   const classes = useStyles();
+  const onClickIcon = useCallback((url) => () => window.open(url, "_blank"), []);
   return (
     <Page title="About Me"
       parallaxClass={classes.parallaxClass}
@@ -109,7 +134,7 @@ const About = (props) => {
       >
       <div className={classes.pageContent}>
         <div className={classes.columnDiv}>
-          <ContentSecion 
+          <ContentSection 
             isFirst
             period={'From 2017 to present'}
             position={'Dimension Eight Artificial Intelligence, Software Engineer'}
@@ -119,7 +144,7 @@ const About = (props) => {
                 title: 'Tools',
                 description: 'react, material-ui, react-router, redux, redux-saga, nodejs, TypeScript, React-Native, docker, webrtc, '}]}
           />
-          <ContentSecion
+          <ContentSection
             period={'From 2016 to 2017'}
             position={'Substitude Military Service'}
             details={[
@@ -128,12 +153,12 @@ const About = (props) => {
                 title: '50+',
                 description: 'Users and using the website'}]}
           />
-          <ContentSecion
+          <ContentSection
             period={'From 2014 to 2016'}
             position={'NCCU, Manament Information System, Master'}
             // details={['Paper, R, php Oracle']}
           />
-          <ContentSecion
+          <ContentSection
             period={'From 2014/7 to 2014/12'}
             position={'Institute For Information Industry, Digital Service Innovation Lab, Intern'}
             details={[
@@ -143,7 +168,7 @@ const About = (props) => {
                 description: 'python, php, MySQL'}
             ]}
           />
-          <ContentSecion
+          <ContentSection
             period={'From 2010 to 2014'}
             position={'NUK, Information Management, Bachelor'}
             details={[
@@ -157,14 +182,49 @@ const About = (props) => {
                 description: 'First Place' },
             ]}
           />
-          
+          <div className={classes.sectionDiv} style={{ paddingBottom: 64 }}>
+            <div />
+            <div className={classes.columnDiv}>
+              <div className={classes.rowDiv}>
+                <div className={clsx(classes.detail, classes.extraDetial)}>
+                  <div>
+                    <IconButton className={classes.iconDiv} onClick={onClickIcon(`${getPath('resume')}/Resume.pdf`)}>
+                      <Resume className={classes.icon} />
+                    </IconButton>
+                  </div>
+                  <Typography variant='h5' style={{ paddingLeft: 48 }}>Resume</Typography>
+                </div>
+                <div className={clsx(classes.detail, classes.extraDetial)}>
+                  <div>
+                    <IconButton className={classes.iconDiv} onClick={onClickIcon("https://github.com/pohsiu")}>
+                      <Github className={classes.icon} />
+                    </IconButton>
+                  </div>
+                  <Typography variant='h5' style={{ paddingLeft: 48 }}>Github</Typography>
+                </div>
+              </div>
+              <div className={classes.rowDiv}>
+                <div className={clsx(classes.detail, classes.extraDetial)}>
+                  <div>
+                    <IconButton className={classes.iconDiv} onClick={onClickIcon("https://www.linkedin.com/in/hsiao-louis-7434377a/")}>
+                      <LinkedIn className={classes.icon} />
+                    </IconButton>
+                  </div>
+                  <Typography variant='h5' style={{ paddingLeft: 48 }}>LinkedIn</Typography>
+                </div>
+                <div className={clsx(classes.detail, classes.extraDetial)}>
+                  <div>
+                    <IconButton className={classes.iconDiv} onClick={onClickIcon("https://medium.com/@pohsiu0709")}>
+                      <Medium className={classes.icon} />
+                    </IconButton>
+                  </div>
+                  <Typography variant='h5' style={{ paddingLeft: 48 }}>Medium</Typography>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          <div>Resume</div>
-          <div>Git</div>
-          <div>LinkenIn</div>
-          <div>Medium</div>
-        </div>
+        
       </div>
     </Page>
   );

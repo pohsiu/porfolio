@@ -26,6 +26,9 @@ export default createMuiTheme({
     secondary: {
       main: '#ffffff',
     },
+    icon: {
+      main: '#034f84',
+    },
     background: {
       main: '#2a2f36',
     }
