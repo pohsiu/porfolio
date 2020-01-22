@@ -21,10 +21,14 @@ const useStyles = makeStyles(theme => ({
     cursor: 'none',
     paddingBottom: 48,
     padding: '0 4.5rem 8rem',
+    borderRight: '1px #9da7b3 solid',
+    '&:first-child': {
+      minWidth: '66vw',
+      width: '66%',
+    }
   },
   projectIsHover: {
-    borderLeft: '0.5px #9da7b3 solid',
-    borderRight: '0.5px #9da7b3 solid',
+    transition: 'opacity .2s ease-in-out,background .2s ease-in-out',
   },
   projectLink: {
     display: 'flex',
