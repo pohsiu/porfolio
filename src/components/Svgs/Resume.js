@@ -3,7 +3,7 @@ import SvgIcon from '@material-ui/core/SvgIcon';
 
 const Resume = (props) =>
   (<SvgIcon {...props}>
-    <svg version="1.1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;">
+    <svg viewBox="0 0 512 512">
       <g>
         <g>
           <path d="M414.007,148.75c5.522,0,10-4.477,10-10V30c0-16.542-13.458-30-30-30h-364c-16.542,0-30,13.458-30,30v452
