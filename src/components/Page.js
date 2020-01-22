@@ -67,6 +67,7 @@ const useStyles = makeStyles(({ palette }) => ({
     maxWidth: 1440,
     minHeight: 800,
     paddingTop: 24,
+    color: palette.secondary.main,
   },
   workType: {
     position: 'absolute',
@@ -80,6 +81,7 @@ const useStyles = makeStyles(({ palette }) => ({
     lineHeight: 2,
     borderBottom: `1px solid ${palette.secondary.main}`,
     fontSize: '.88rem',
+    color: palette.secondary.main,
   },
   titleContainer: {
     position: 'relative',
@@ -114,8 +116,8 @@ const Page = (props) => {
               <h1 className={clsx(classes.title, titleClass)}>{props.title}</h1>
             </div>
             <ul className={classes.workType}>
-              <li><span>{props.SpanTitle || 'Product'}</span></li>
-              <li><span>{props.SpanDetail || 'Internal Venture'}</span></li>
+              <li><span>{props.spanTitle || 'Product'}</span></li>
+              <li><span>{props.spanDetail || 'Internal Venture'}</span></li>
             </ul>
           </div>
         </div>

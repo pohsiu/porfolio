@@ -23,24 +23,28 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
   },
-  rowDiv: {
-    display: 'flex',
-    flexDirection: 'row',
-    
-  },
-  rowDiv: {
-    display: 'flex',
-    flexDirection: 'row',
+  rowsDiv: {
+    borderBottom: '1px solid #3c434d',
     marginTop: 48,
     minHeight: 80,
     paddingBottom: 32,
     marginBottom: 56,
-    borderBottom: '1px solid #3c434d',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  rowDiv: {
+    display: 'flex',
+    flexDirection: 'row',
+    minHeight: 120,
+    marginBottom: 24,
+    '&:last-child': {
+      marginBottom: 0,
+    }
   },
   detail: {
     boxSizing: 'border-box',
     width: '50%',
-    paddingRight: '5%',
+    paddingRight: '10%',
     lineHeight: 2,
     whiteSpace: 'pre-line',
   },
@@ -60,10 +64,35 @@ const ContentSecion = (props) => {
       </div>
       <div>
         <Typography className={classes.position} variant="h3" color={'Secondary'} >{position}</Typography>
-        <div className={classes.rowDiv}>
-          {details && details.map(({ text }, index) => 
-            (<Typography key={index.toString()} className={classes.detail} variant="body2" color={'Secondary'} >{text}</Typography>
-          ))}
+        <div className={classes.rowsDiv}>
+          
+          {details && details.map(({ text, withRight, title, description }, index) => 
+            {
+              if(withRight) {
+                return (
+                  <div className={classes.rowDiv}>
+                    <Typography className={classes.detail} variant="body2" color={'Secondary'} >
+                      {text}
+                    </Typography>
+                    <div className={classes.detail} >
+                      <Typography variant="h3" color={'Secondary'}>
+                        {title}
+                      </Typography>
+                      <Typography variant="body2" color={'Secondary'} style={{ marginTop: 12, color: 'rgba(255, 255, 255, 0.6)' }}>
+                        {description}
+                      </Typography>
+                    </div>
+                  </div>
+                )
+              }
+              return (
+                <div className={classes.rowDiv} ket={index.toString()}>
+                  <Typography className={classes.detail} variant="body2" color={'Secondary'} >
+                    {text}
+                  </Typography>
+                </div>)
+            }
+          )}
         </div>
       </div>
     </div>
@@ -73,7 +102,11 @@ const ContentSecion = (props) => {
 const About = (props) => {
   const classes = useStyles();
   return (
-    <Page title="About Me" parallaxClass={classes.parallaxClass}>
+    <Page title="About Me"
+      parallaxClass={classes.parallaxClass}
+      spanTitle="Louis Hsiao, a person who loved doing somethings weird."
+      spanDetail="Hobbies: Volleyball, Jogging, Hiking, Table games and America TV series."
+      >
       <div className={classes.pageContent}>
         <div className={classes.columnDiv}>
           <ContentSecion 
@@ -81,15 +114,19 @@ const About = (props) => {
             period={'From 2017 to present'}
             position={'Dimension Eight Artificial Intelligence, Software Engineer'}
             details={[
-              { text: 'Companies everywhere are realizing the benefit of being able to provide a flexible work environment and source employees from anywhere. Many tech companies, such as InVision, Buffer, Customer.io, and Zapier boast fully remote teams, with more companies joining this group every day.' },
-              { text: 'Dimension Eight Artificial Intelligence, Software Engineer' }]}
+              { text: 'WebRTC framework library integration. Dedicated to modulizing reusable components and data visulization.\nHands on docker and nodejs to develop RESTful api.\nIn charge of mobile version POC products. Opensource projects contribution in npm. ',
+                withRight: true,
+                title: 'Tools',
+                description: 'react, material-ui, react-router, redux, redux-saga, nodejs, TypeScript, React-Native, docker, webrtc, '}]}
           />
           <ContentSecion
             period={'From 2016 to 2017'}
             position={'Substitude Military Service'}
             details={[
-              { text: 'Implement a website for meal ordering purpose aim to hhahahahahahah Implement a website for meal ordering purpose aim to hhahahahahahah Implement a website for meal ordering purpose aim to hhahahahahahah' },
-              { text: '50+ users/day'}]}
+              { text: 'Implement a website for meal ordering purpose aim to minize human cost of daily job. For improving user experience, the website was integrated the RWD by bootstrap and line-bot notification.',
+                withRight: true,
+                title: '50+',
+                description: 'Users and using the website'}]}
           />
           <ContentSecion
             period={'From 2014 to 2016'}
@@ -100,16 +137,25 @@ const About = (props) => {
             period={'From 2014/7 to 2014/12'}
             position={'Institute For Information Industry, Digital Service Innovation Lab, Intern'}
             details={[
-              { text: 'Implement a crawler to fetch amazon website product details, customer reviews and prices etc. with python. \n Automize weekly report with php, replacing the manual way of serveral steps.'},
-              { text: 'python, php, MySQL'}
+              { text: 'Implement a crawler to fetch amazon website product details, customer reviews and prices etc. with python. \n Automize weekly report with php, replacing the manual way of serveral steps.',
+                withRight: true,
+                title: 'Tools',
+                description: 'python, php, MySQL'}
             ]}
           />
           <ContentSecion
             period={'From 2010 to 2014'}
             position={'NUK, Information Management, Bachelor'}
             details={[
-              { text: 'Award:' },
-              { text: 'Award:' }]}
+              { text: '2013 ICT Innovative Services Contest\nLocation-based chatting and discussing application(Android).',
+                withRight: true,
+                title: 'Award',
+                description: 'Second Place Of Group NGIS' },
+              { text: '2013 Graduate Project Competition of NUKIM\nLocation-based chatting and discussing application(Android).',
+                withRight: true,
+                title: 'Award',
+                description: 'First Place' },
+            ]}
           />
           
         </div>
