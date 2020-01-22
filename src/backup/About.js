@@ -1,8 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import getImgPath from '../../utils/getImgPath';
+import getPath from '../../utils/getPath';
 
-const imgPath = getImgPath();
+const imgPath = getPath('images');
 
 const useStyles = makeStyles(theme => ({
   root: {
