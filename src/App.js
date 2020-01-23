@@ -6,7 +6,6 @@ import About from './pages/About';
 import Skill from './pages/Skill';
 import OpenSource from './pages/OpenSource';
 import Project from './pages/Project';
-
 const useStyles = makeStyles(theme => ({
   app: {
     display: 'flex',

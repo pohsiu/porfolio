@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import BackgroundSection from '../../components/BackgroundSection';
 import Sections from '../../components/Sections';
+import Narbar from '../../components/Navbar';
 
 const useStyles = makeStyles(theme => ({
   background: {
@@ -20,6 +21,12 @@ const useStyles = makeStyles(theme => ({
     marginBottom: -15,
     cursor: 'none',
   },
+  navContainer: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100vw',
+  }
 }));
 
 const LandingPage = (props) => {
@@ -32,6 +39,9 @@ const LandingPage = (props) => {
         sectionIndex={sectionIndex}
       />
       <Sections className={classes.projects} setSectionIndex={setSectionIndex} />
+      <div className={classes.navContainer}>
+        <Narbar />
+      </div>
     </React.Fragment>
   );
 }

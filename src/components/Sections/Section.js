@@ -25,7 +25,15 @@ const useStyles = makeStyles(theme => ({
     '&:first-child': {
       minWidth: '66vw',
       width: '66%',
-    }
+      [theme.breakpoints.down('xs')]: {
+        minWidth: '100vw',
+        width: '100%',
+      },
+    },
+    [theme.breakpoints.down('xs')]: {
+      minWidth: '100vw',
+      width: '100%',
+    },
   },
   projectIsHover: {
     transition: 'opacity .2s ease-in-out,background .2s ease-in-out',
