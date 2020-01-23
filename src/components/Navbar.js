@@ -4,6 +4,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import clxs from 'clsx';
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   "@keyframes moveInLeft": {
@@ -161,11 +162,11 @@ const NavItem = (props) => {
   const { isSm, href, ...others } = props;
   return (
     <li className={clxs(classes.navItem, { [classes.smNavItem]: isSm })} {...others}>
-      <a className={clxs(classes.navLink, { [classes.smNavLink]: isSm })} href={props.href}>
+      <Link className={clxs(classes.navLink, { [classes.smNavLink]: isSm })} to={props.href}>
         <span className={classes.navEffect}>
           {props.children}
         </span>
-      </a>
+      </Link>
     </li>
   )
 }

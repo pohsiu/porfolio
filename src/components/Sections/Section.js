@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import Slide from '@material-ui/core/Slide';
 import { makeStyles } from '@material-ui/core/styles';
 import classNames from 'clsx';
-
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   project: {
@@ -73,7 +73,7 @@ const Project = props => {
   const color = isHover ? 'primary' : 'secondary';
   return (
     <div className={classNames(classes.project, {[classes.projectIsHover]: isHover })} onMouseEnter={onMouseOver} onMouseLeave={onMouseOut}>
-      <a className={classNames(classes.projectLink, {[classes.projectLinkIsHover]: isHover })} href={props.url}>
+      <Link to={props.url} className={classNames(classes.projectLink, {[classes.projectLinkIsHover]: isHover })}>
         <Typography variant="h5" color={color} gutterBottom>{subtitle}</Typography>
         <Typography variant="h1" component="h2" color={color} gutterBottom>{title}</Typography>
         <Slide direction="up" in={isHover} mountOnEnter unmountOnExit>
@@ -82,7 +82,7 @@ const Project = props => {
             <Typography variant="h6" color={color} gutterBottom>View Case Study -></Typography>
           </div>
         </Slide>
-      </a>
+      </Link>
     </div>
   )
 }

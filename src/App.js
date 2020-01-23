@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 
 function AppRouter() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Route path="/" exact component={Home} />
       <Route path="/about/" component={About} />
       <Route path="/skill/" component={Skill} />
