@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from './pages/Home';
 import About from './pages/About';
 import Skill from './pages/Skill';
@@ -33,11 +33,13 @@ const useStyles = makeStyles(theme => ({
 function AppRouter() {
   return (
     <Router basename={process.env.PUBLIC_URL}>
-      <Route path="/" exact component={Home} />
-      <Route path="/about/" component={About} />
-      <Route path="/skill/" component={Skill} />
-      <Route path="/project/" component={Project} />
-      <Route path="/opensource/" component={OpenSource} />
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/about/" component={About} />
+        <Route path="/skill/" component={Skill} />
+        <Route path="/project/" component={Project} />
+        <Route path="/opensource/" component={OpenSource} />
+      </Switch>
     </Router>
   )
 }

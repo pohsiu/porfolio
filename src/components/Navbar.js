@@ -188,9 +188,9 @@ const Navbar = (props) => {
             [classes.isOpenWrapper]: isMenuOpen,
           })} {...props}>
         <div className={classes.smNavWrapper}>
-          <a className={classes.logoHome} href='/'>
+          <Link className={classes.logoHome} to='/'>
             <HomeIcon />
-          </a>
+          </Link>
           <div className={classes.menu} onClick={onMenuClick}>{isMenuOpen ? 'Close' : 'Menu'}</div>
           {isMenuOpen && <ul className={clxs(classes.smNavItems)}> 
             <NavItem href='/about/' isSm >About</NavItem>
