@@ -196,7 +196,7 @@ const Navbar = (props) => {
             <NavItem href='/about/' isSm >About</NavItem>
             <NavItem href='/skill/' isSm >Skill</NavItem>
             <NavItem href='/project/' isSm >Project</NavItem>
-            <NavItem href='/opensource' isSm >Open Source</NavItem>
+            <NavItem href='/opensource/' isSm >Open Source</NavItem>
           </ul>}
         </div>
       </nav>
@@ -205,14 +205,14 @@ const Navbar = (props) => {
   return (
     <nav className={classes.navRoot} {...props}>
       <div className={classes.navWrapper}>
-        <a className={classes.logoHome} href='/'>
+        <Link className={classes.logoHome} to='/'>
           <HomeIcon />
-        </a>
+        </Link>
         <ul className={classes.navItems}>
           <NavItem href='/about/'>About</NavItem>
           <NavItem href='/skill/'>Skill</NavItem>
           <NavItem href='/project/'>Project</NavItem>
-          <NavItem href='/opensource'>Open Source</NavItem>
+          <NavItem href='/opensource/'>Open Source</NavItem>
         </ul>
       </div>
     </nav>
