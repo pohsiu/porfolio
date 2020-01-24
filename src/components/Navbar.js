@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import { makeStyles, darken } from '@material-ui/core/styles';
 import HomeIcon from '@material-ui/icons/Home';
-import { useTheme } from '@material-ui/core/styles';
+import Grow from '@material-ui/core/Grow';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 import clxs from 'clsx';
-import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   "@keyframes moveInLeft": {
@@ -102,16 +103,14 @@ const useStyles = makeStyles(theme => ({
     top: '7.5rem',
     display: 'block',
     left: 0,
-    paddingInlineStart: 0,
+    paddingInlineStart: '20px',
     lineHeight: 1.6,
   },
-  smNavItem: { // TODO: fadeIn one by one in order,
-    animationName: '$moveInLeft',
-    animationDuration: '.6s',
-    animationTimingFunction: 'ease-in',
+  smNavItem: {
     fontSize: '2.5rem',
     listStyleType: 'none',
     width: '100vw',
+    
   },
   navItem: {
     position: 'relative',
@@ -157,6 +156,18 @@ const useWidth = () => {
   );
 }
 
+const SMNavItems = (props) => {
+  const classes = useStyles();
+  const { checked, ...others } = props;
+  return (
+    <ul className={clxs(classes.smNavItems)} {...others}> 
+      <Grow in={checked} {...(checked ? { timeout: 200 } : {})}><NavItem href='/about/' isSm >About</NavItem></Grow>
+      <Grow in={checked} {...(checked ? { timeout: 600 } : {})}><NavItem href='/skill/' isSm >Skill</NavItem></Grow>
+      <Grow in={checked} {...(checked ? { timeout: 800 } : {})}><NavItem href='/project/' isSm >Project</NavItem></Grow>
+      <Grow in={checked} {...(checked ? { timeout: 1200 } : {})}><NavItem href='/opensource/' isSm >Open Source</NavItem></Grow>
+    </ul>
+  )
+}
 const NavItem = (props) => {
   const classes = useStyles();
   const { isSm, href, ...others } = props;
@@ -192,12 +203,7 @@ const Navbar = (props) => {
             <HomeIcon />
           </Link>
           <div className={classes.menu} onClick={onMenuClick}>{isMenuOpen ? 'Close' : 'Menu'}</div>
-          {isMenuOpen && <ul className={clxs(classes.smNavItems)}> 
-            <NavItem href='/about/' isSm >About</NavItem>
-            <NavItem href='/skill/' isSm >Skill</NavItem>
-            <NavItem href='/project/' isSm >Project</NavItem>
-            <NavItem href='/opensource/' isSm >Open Source</NavItem>
-          </ul>}
+          {<SMNavItems checked={isMenuOpen}/>}
         </div>
       </nav>
     );
