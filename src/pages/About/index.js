@@ -12,7 +12,7 @@ import Github from '../../components/Svgs/Github';
 
 const useStyles = makeStyles(theme => ({
   parallaxClass: {
-    backgroundImage: `url(${getPath('images')}/bg1.jpg)`,
+    backgroundImage: `url(${getPath('images')}/bg6.jpg)`,
   },
   pageContent: {
     display: 'flex',
