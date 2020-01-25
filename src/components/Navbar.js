@@ -30,14 +30,6 @@ const useStyles = makeStyles(theme => ({
       opacity: 1,
     }
   },
-  "@keyframes fadeOut": {
-    '0%': {
-      opacity: 1,
-    },
-    '100%': {
-      opacity: 0,
-    }
-  },
   navRoot: {
     minHeight: '6.5rem',
     display: 'flex',

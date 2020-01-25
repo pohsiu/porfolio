@@ -11,8 +11,10 @@ import LinkedIn from '../../components/Svgs/LinkedIn';
 import Github from '../../components/Svgs/Github';
 
 const useStyles = makeStyles(theme => ({
+  
   parallaxClass: {
     backgroundImage: `url(${getPath('images')}/bg6.jpg)`,
+    
   },
   pageContent: {
     display: 'flex',

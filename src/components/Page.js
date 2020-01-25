@@ -5,6 +5,14 @@ import BGIcon from './Svgs/BGIcon';
 import Navbar from './Navbar';
 // TODO: put reused navbar in here
 const useStyles = makeStyles(({ palette }) => ({
+  "@keyframes bgAnimation": {
+    "0%": {
+      opacity: 0,
+    },
+    "100%": {
+      opacity: 1,
+    },
+  },
   root: {
     display: 'block',
     width: '100%',
@@ -27,9 +35,11 @@ const useStyles = makeStyles(({ palette }) => ({
     width: 'calc(100vw - 12px)',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
+    animation: '$bgAnimation .5s ease-in',
     // marginLeft: '50%',
     // transform: 'translateX(-50%)',
   },
+
   heroWrap: {
     display: 'flex',
     position: 'relative',
