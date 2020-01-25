@@ -21,12 +21,16 @@ const useStyles = makeStyles(theme => ({
     marginBottom: -15,
     cursor: 'none',
   },
-  navContainer: {
+  fixedDiv: {
     position: 'fixed',
     top: 0,
-    left: '50%',
-    transform: 'tranlateX(-50%)',
+    width: '100%',
+  },
+  navContainer: {
+    display: 'flex',
+    margin: '0 auto',
     maxWidth: 1440,
+    verticalAlign: 'baseline',
   }
 }));
 
@@ -40,8 +44,10 @@ const LandingPage = (props) => {
         sectionIndex={sectionIndex}
       />
       <Sections className={classes.projects} setSectionIndex={setSectionIndex} />
-      <div className={classes.navContainer}>
-        <Narbar />
+      <div className={classes.fixedDiv}>
+        <div className={classes.navContainer}>
+          <Narbar />
+        </div>
       </div>
     </React.Fragment>
   );

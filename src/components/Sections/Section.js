@@ -19,8 +19,8 @@ const useStyles = makeStyles(theme => ({
     boxSizing: 'border-box',
     verticalAlign: 'top',
     cursor: 'none',
-    paddingBottom: 48,
     padding: '0 4.5rem 8rem',
+    paddingBottom: 120,
     borderRight: '1px #9da7b3 solid',
     '&:first-child': {
       minWidth: '66vw',
@@ -35,9 +35,6 @@ const useStyles = makeStyles(theme => ({
       width: '100%',
     },
   },
-  projectIsHover: {
-    transition: 'opacity .2s ease-in-out,background .2s ease-in-out',
-  },
   projectLink: {
     display: 'flex',
     position: 'relative',
@@ -48,9 +45,6 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'flex-end',
     textDecoration: 'none',
     userSelect: 'none',
-  },
-  projectLinkIsHover: {
-
   },
 }))
 
@@ -70,16 +64,15 @@ const Project = props => {
   }, [mouseOut]);
 
   const { description, title, subtitle } = props;
-  const color = isHover ? 'primary' : 'secondary';
   return (
-    <div className={classNames(classes.project, {[classes.projectIsHover]: isHover })} onMouseEnter={onMouseOver} onMouseLeave={onMouseOut}>
+    <div className={classNames(classes.project)} onMouseEnter={onMouseOver} onMouseLeave={onMouseOut}>
       <Link to={props.url} className={classNames(classes.projectLink, {[classes.projectLinkIsHover]: isHover })}>
-        <Typography variant="h5" color={color} gutterBottom>{subtitle}</Typography>
-        <Typography variant="h1" component="h2" color={color} gutterBottom>{title}</Typography>
+        {subtitle && <Typography variant="h5" color='primary'>{subtitle}</Typography>}
+        <Typography variant="h1" component="h2" color='primary'>{title}</Typography>
         <Slide direction="up" in={isHover} mountOnEnter unmountOnExit>
           <div>
-            <Typography variant="subtitle1" color={color} gutterBottom>{description}</Typography>
-            <Typography variant="h6" color={color} gutterBottom>View Case Study -></Typography>
+            <Typography variant="subtitle1" color='primary'>{description}</Typography>
+            <Typography variant="h6" color='primary'>Explore More -> </Typography>
           </div>
         </Slide>
       </Link>

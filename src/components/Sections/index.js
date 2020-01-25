@@ -6,26 +6,26 @@ import Section from './Section';
 const sectionLists = [
   {
     title: "About",
-    subtitle: "Explore More",
-    description: "We run a product that serves distributed teams",
+    // subtitle: "Explore More",
+    description: "More detail about myself,such as my experiences, bobbies etc.",
     pageUrl: "/about/",
   },
   {
     title: "Skill",
-    subtitle: "Product",
-    description: "We run a product that serves distributed teams",
+    // subtitle: "Product",
+    description: "Somethings what I am good at or expertised in.",
     pageUrl: "/skill/",
   },
   {
     title: "Project",
-    subtitle: "Platform Design",
-    description: "We redesigned and rebuilt the Blue Diamond website from the ground-up.",
+    // subtitle: "Platform Design",
+    description: "The past works that I could share with. Including website, application, chatbot etc.",
     pageUrl: "/project/",
   },
   {
     title: "Open Source Module",
-    subtitle: "Product",
-    description: "We run a product that serves distributed teams",
+    // subtitle: "Product",
+    description: "The open source modules that I had published on social media.",
     pageUrl: "/opensource/",
   },
 ]
