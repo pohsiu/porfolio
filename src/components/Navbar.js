@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { makeStyles, darken } from '@material-ui/core/styles';
 import HomeIcon from '@material-ui/icons/Home';
