@@ -8,9 +8,15 @@ const useStyles = makeStyles(({ palette }) => ({
   "@keyframes bgAnimation": {
     "0%": {
       opacity: 0,
+      '-webkit-filter': 'blur(10px)',
+    },
+    "50%": {
+      opacity: 0.5,
+      '-webkit-filter': 'blur(5px)',
     },
     "100%": {
       opacity: 1,
+      '-webkit-filter': 'blur(0px)',
     },
   },
   root: {

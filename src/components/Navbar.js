@@ -88,6 +88,10 @@ const useStyles = makeStyles(theme => ({
     '&:hover': {
       transform: 'translateY(-30%)',
     },
+    '&:active': {
+      transitionDuration: '.02s',
+      transform: 'translateY(2%)',
+    }
   },
   navLink: {
     display: 'inline-block',
@@ -107,8 +111,12 @@ const useStyles = makeStyles(theme => ({
     transition: 'transform .2s cubic-bezier(.59,.11,.64,1.38)',
     '&:hover': {
       color: theme.palette.secondary.one,
-      transform: 'translate(2px, 2px)',
+      transform: 'translate(-2px, -2px)',
     },
+    '&:active': {
+      transitionDuration: '.02s',
+      transform: 'translate(1px, 1px)',
+    }
   },
   navLinkBg: {
   },
