@@ -16,18 +16,6 @@ const sectionLists = [
     description: "The past works that I could share with. Including website, application, chatbot etc.",
     pageUrl: "/projects/",
   },
-  {
-    title: "Skill",
-    // subtitle: "Product",
-    description: "Somethings what I am good at or expertised in.",
-    pageUrl: "/skill/",
-  },
-  {
-    title: "Open Source Module",
-    // subtitle: "Product",
-    description: "The open source modules that I had published on social media.",
-    pageUrl: "/opensource/",
-  },
 ]
 
 const Sections = props => {
