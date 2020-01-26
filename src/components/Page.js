@@ -31,10 +31,13 @@ const useStyles = makeStyles(({ palette }) => ({
     top: 0,
     bottom: 0,
     height: '100vh',
+    maxHeight: 682,
     zIndex: 1,
     width: 'calc(100vw - 12px)',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
+    backgroundPositionX: '40%',
+    backgroundPositionY: '40%',
     animation: '$bgAnimation .5s ease-in',
     // marginLeft: '50%',
     // transform: 'translateX(-50%)',
@@ -55,7 +58,8 @@ const useStyles = makeStyles(({ palette }) => ({
     position: 'relative',
     zIndex: 1,
     overflowX: 'hidden',
-    background: `linear-gradient(transparent,transparent 100vh, ${palette.background.main} 100.001vh, ${palette.background.main})`
+    background: `linear-gradient(transparent,transparent 682px, ${palette.background.main} 683px, ${palette.background.main})`,
+    width: 'calc(100vw - 12px)',
   },
   outerContainer: {
     width: '100%',
@@ -69,6 +73,7 @@ const useStyles = makeStyles(({ palette }) => ({
     left: '50%',
     width: '100vw',
     height: '100vh',
+    maxHeight: 682,
     transform: 'translateX(-50%)',
   },
   pageContent: {
