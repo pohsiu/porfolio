@@ -8,28 +8,6 @@ import { useTheme } from '@material-ui/core/styles';
 import clxs from 'clsx';
 
 const useStyles = makeStyles(theme => ({
-  "@keyframes moveInLeft": {
-    '0%': {
-      opacity: 0,
-      transform: 'translateX(100px)', /* animated in x direction */
-    },
-    '80%': {
-      opacity: 0.6,
-      transform: 'translateX(-10px)',
-    },
-    '100%': {
-      opacity: 1,
-      transform: 'translate(0)',
-    }
-  },
-  "@keyframes fadeIn": {
-    '0%': {
-      opacity: 0,
-    },
-    '100%': {
-      opacity: 1,
-    }
-  },
   navRoot: {
     minHeight: '6.5rem',
     display: 'flex',
@@ -53,8 +31,7 @@ const useStyles = makeStyles(theme => ({
   isOpenWrapper: {
     height: '100vh',
     backgroundColor: theme.palette.background.main,
-    animationName: '$fadeIn',
-    animationDuration: '.6s',
+    transition: 'backgroundColor .6s ease-in',
   },
   
   menu: {
@@ -102,7 +79,6 @@ const useStyles = makeStyles(theme => ({
     fontSize: '2.5rem',
     listStyleType: 'none',
     width: '100vw',
-    
   },
   navItem: {
     position: 'relative',
@@ -110,7 +86,6 @@ const useStyles = makeStyles(theme => ({
     cursor: 'pointer',
     transition: 'transform .2s cubic-bezier(.59,.11,.64,1.38)',
     '&:hover': {
-      // TODO: add hover effect
       transform: 'translateY(-30%)',
     },
   },
@@ -129,6 +104,11 @@ const useStyles = makeStyles(theme => ({
   },
   smNavLink: {
     height: '100%',
+    transition: 'transform .2s cubic-bezier(.59,.11,.64,1.38)',
+    '&:hover': {
+      color: theme.palette.secondary.one,
+      transform: 'translate(2px, 2px)',
+    },
   },
   navLinkBg: {
   },
@@ -154,8 +134,8 @@ const SMNavItems = (props) => {
   return (
     <ul className={clxs(classes.smNavItems)} {...others}> 
       <Grow in={checked} {...(checked ? { timeout: 200 } : {})}><NavItem href='/about/' isSm >About</NavItem></Grow>
-      <Grow in={checked} {...(checked ? { timeout: 800 } : {})}><NavItem href='/projects/' isSm >Projects</NavItem></Grow>
-      <Grow in={checked} {...(checked ? { timeout: 600 } : {})}><NavItem href='/skill/' isSm >Skill</NavItem></Grow>
+      <Grow in={checked} {...(checked ? { timeout: 600 } : {})}><NavItem href='/projects/' isSm >Projects</NavItem></Grow>
+      <Grow in={checked} {...(checked ? { timeout: 800 } : {})}><NavItem href='/skill/' isSm >Skill</NavItem></Grow>
       <Grow in={checked} {...(checked ? { timeout: 1200 } : {})}><NavItem href='/opensource/' isSm >Open Source</NavItem></Grow>
     </ul>
   )
