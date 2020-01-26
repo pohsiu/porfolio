@@ -67,12 +67,12 @@ const Project = props => {
   return (
     <div className={classNames(classes.project)} onMouseEnter={onMouseOver} onMouseLeave={onMouseOut}>
       <Link to={props.url} className={classNames(classes.projectLink, {[classes.projectLinkIsHover]: isHover })}>
-        {subtitle && <Typography variant="h5" color='primary'>{subtitle}</Typography>}
-        <Typography variant="h1" component="h2" color='primary'>{title}</Typography>
+        {subtitle && <Typography variant="h5" color='secondary'>{subtitle}</Typography>}
+        <Typography variant="h1" component="h2" color='secondary'>{title}</Typography>
         <Slide direction="up" in={isHover} mountOnEnter unmountOnExit>
           <div>
-            <Typography variant="subtitle1" color='primary'>{description}</Typography>
-            <Typography variant="h6" color='primary'>Explore More -> </Typography>
+            <Typography variant="subtitle1" color='secondary'>{description}</Typography>
+            <Typography variant="h6" color='secondary'>Explore More -> </Typography>
           </div>
         </Slide>
       </Link>

@@ -21,7 +21,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 export default createMuiTheme({
   palette: {
     primary: {
-      main: '#fafafa',
+      main: '#034f84',
     },
     secondary: {
       main: '#ffffff',
@@ -32,6 +32,9 @@ export default createMuiTheme({
     },
     background: {
       main: '#2a2f36',
+      one: '#ffffff',
+      two: '#d5f4e6',
+      three: '#92a8d1',
     }
   },
 });
