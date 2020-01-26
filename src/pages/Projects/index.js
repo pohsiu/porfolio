@@ -8,13 +8,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Project = (props) => {
+const Projects = (props) => {
   const classes = useStyles();
   return (
-    <Page title="Project" parallaxClass={classes.parallaxClass}>
-      <div>This is Project content Below</div>
+    <Page title="Projects" parallaxClass={classes.parallaxClass}>
+      <div>This is Projects content Below</div>
     </Page>
   );
 }
 
-export default Project;
+export default Projects;

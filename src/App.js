@@ -5,7 +5,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Skill from './pages/Skill';
 import OpenSource from './pages/OpenSource';
-import Project from './pages/Project';
+import Projects from './pages/Projects';
 const useStyles = makeStyles(theme => ({
   app: {
     display: 'flex',
@@ -37,7 +37,7 @@ function AppRouter() {
         <Route path="/" exact component={Home} />
         <Route path="/about/" component={About} />
         <Route path="/skill/" component={Skill} />
-        <Route path="/project/" component={Project} />
+        <Route path="/projects/" component={Projects} />
         <Route path="/opensource/" component={OpenSource} />
       </Switch>
     </Router>

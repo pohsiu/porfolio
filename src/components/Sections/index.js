@@ -11,16 +11,16 @@ const sectionLists = [
     pageUrl: "/about/",
   },
   {
+    title: "Projects",
+    // subtitle: "Platform Design",
+    description: "The past works that I could share with. Including website, application, chatbot etc.",
+    pageUrl: "/projects/",
+  },
+  {
     title: "Skill",
     // subtitle: "Product",
     description: "Somethings what I am good at or expertised in.",
     pageUrl: "/skill/",
-  },
-  {
-    title: "Project",
-    // subtitle: "Platform Design",
-    description: "The past works that I could share with. Including website, application, chatbot etc.",
-    pageUrl: "/project/",
   },
   {
     title: "Open Source Module",
