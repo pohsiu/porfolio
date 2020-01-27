@@ -111,6 +111,7 @@ const Project = (props) => {
           <Typography className={classes.description} variant='body1' color='primary'>{props.description || 'Project Title'}</Typography>
         </div>
         <Typography className={clsx(classes.blockNumber, classes.numberOne)} variant='h1'>{'01'}</Typography>
+        <div style={{ border: '1px solid black', width: 700, height: 420, marginLeft: 80, marginTop: 24, color: 'black' }}>Login Screen Maybe</div>
       </div>
       <div className={clsx(classes.blockClass, classes.blockTwo)}>
         <Typography className={clsx(classes.blockNumber, classes.numberTwo)} variant='h1'>{'02'}</Typography>
@@ -138,6 +139,17 @@ const Project = (props) => {
         <div className={clsx(classes.textBlockBoundary, classes.boundaryThree)}> 
           <Typography variant='h3' color='primary' className={classes.titleThree}>RWD {<strong>Implementation</strong>}</Typography>
           <Typography variant='body1' color='primary' className={classes.bodyThree}>{'Build responsive web design effect by material-ui and media-query.'}</Typography>
+          
+          <div
+            style={{ 
+              border: '1px solid black', width: 320, height: 540, color: 'black',
+              position: 'absolute', top: '20%', left: 80,
+            }}>Mobile Screen 1</div>
+          <div style={{ 
+              border: '1px solid black', width: 320, height: 540, color: 'black',
+              position: 'absolute', top: '10%', left: 280,
+            }}>Mobile Screen 2</div>
+          
         </div>
       </div>
       <div className={clsx(classes.blockClass)}>
