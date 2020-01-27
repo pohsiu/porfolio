@@ -120,7 +120,7 @@ const Project = (props) => {
       <div className={clsx(classes.blockClass, classes.blockTwo)}>
         <Typography className={clsx(classes.blockNumber, classes.numberTwo)} variant='h1'>{'02'}</Typography>
         <Typography variant='h3' color='primary' className={classes.titleTwo}>{<strong>Realtime</strong>} message</Typography>
-        <div className={clsx(classes.textBlockBoundary, classes.boundaryTwo)}> 
+        <div className={clsx(classes.textBlockBoundary, classes.boundaryTwo)}>
           <Typography variant='body1' color='primary' className={classes.bodyTwo}>{'Realize realtime message communication for each video call via websocket and socket.io library.'}</Typography>
         </div>
       </div>

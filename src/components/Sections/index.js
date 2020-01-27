@@ -16,10 +16,9 @@ const sectionLists = [
     pageUrl: "/ears/",
   },
   {
-    title: "ProjectB",
-    // subtitle: "Platform Design",
+    title: "Meals",
     description: "The past works that I could share with. Including website, application, chatbot etc.",
-    pageUrl: "/projects/",
+    pageUrl: "/meals/",
   },
   {
     title: "ProjectC",
@@ -30,8 +29,6 @@ const sectionLists = [
 ]
 
 const Sections = props => {
-  // const classes = useStyles();
-  
   const sectionsRef = useRef(null);
   const [currentTransform, setCurrentTransform] = useState(0);
   const onWheelEvent = useCallback((event) => {
