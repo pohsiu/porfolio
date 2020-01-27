@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import clsx from 'clsx';
 import BackgroundSection from '../../components/BackgroundSection';
 import Sections from '../../components/Sections';
 import Narbar from '../../components/Navbar';
@@ -31,6 +32,9 @@ const useStyles = makeStyles(theme => ({
     margin: '0 auto',
     maxWidth: 1440,
     verticalAlign: 'baseline',
+  },
+  selectNull: {
+    backgroundColor: theme.palette.background.main,
   }
 }));
 
@@ -43,7 +47,7 @@ const LandingPage = (props) => {
         className={classes.background}
         sectionIndex={sectionIndex}
       />
-      <Sections className={classes.projects} setSectionIndex={setSectionIndex} />
+      <Sections className={clsx(classes.projects, { [classes.selectNull]: !sectionIndex })} setSectionIndex={setSectionIndex} />
       <div className={classes.fixedDiv}>
         <div className={classes.navContainer}>
           <Narbar />

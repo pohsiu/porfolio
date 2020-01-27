@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from './pages/Home';
 import About from './pages/About';
-import Projects from './pages/Projects';
+import ProjectA from './pages/ProjectA';
 const useStyles = makeStyles(theme => ({
   app: {
     display: 'flex',
@@ -34,7 +34,7 @@ function AppRouter() {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/about/" component={About} />
-        <Route path="/projects/" component={Projects} />
+        <Route path="/projects/" component={ProjectA} />
       </Switch>
     </Router>
   )
