@@ -37,8 +37,10 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     flex: 1,
   },
-  rowsDivInColumn: {
+  borderAtBottom: {
     borderBottom: '1px solid #3c434d',
+  },
+  rowsDivInColumn: {
     marginTop: 48,
     minHeight: 80,
     paddingBottom: 32,
@@ -103,7 +105,7 @@ const ContentSection = (props) => {
       </div>
       <div>
         <Typography className={classes.position} variant="h3" color={'secondary'} >{position}</Typography>
-        <div className={classes.rowsDivInColumn}>
+        <div className={clsx(classes.rowsDivInColumn, classes.borderAtBottom)}>
           
           {details && details.map(({ text, withRight, title, description }, index) => 
             {
@@ -197,9 +199,9 @@ const About = (props) => {
                 description: 'First Place' },
             ]}
           />
-          <div className={classes.sectionDiv} style={{ paddingBottom: 64 }}>
+          <div className={classes.sectionDiv}>
             <div />
-            <div className={classes.columnDiv}>
+            <div className={clsx(classes.columnDiv, classes.borderAtBottom)} style={{ paddingBottom: 64 }}>
               <div className={classes.rowDiv}>
                 <div className={clsx(classes.detail, classes.extraDetial)}>
                   <div>
@@ -235,6 +237,39 @@ const About = (props) => {
                   </div>
                   <Typography variant='h5' style={{ paddingLeft: 48 }}>Medium</Typography>
                 </div>
+              </div>
+            </div>
+          </div>
+          <div className={classes.sectionDiv} style={{ paddingBottom: 64 }}>
+            <div />
+            <div>
+              <Typography className={classes.position} variant="h3" color={'secondary'} >Skills</Typography>
+              <div>
+                <div>Programming</div>
+                
+                <div>Javascript</div>
+                <div>CSS</div>
+                <div>HTML</div>
+                <div>nodejs</div>
+                <div>python</div>
+              </div>
+              <div>
+                <div>Framework</div>
+                
+                <div>React</div>
+                <div>Django</div>
+              </div>
+              <div>
+                <div>CSS Related library</div>
+                
+                <div>Material ui</div>
+                <div>Bootstrap</div>
+                <div>SASS</div>
+              </div>
+              <div>
+                <div>Others</div>
+                
+                <div>WebRTC</div>
               </div>
             </div>
           </div>
