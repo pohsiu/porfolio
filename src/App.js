@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from './pages/Home';
 import About from './pages/About';
 import Ears from './pages/Ears';
+import Meals from './pages/Meals';
 const useStyles = makeStyles(theme => ({
   app: {
     display: 'flex',
@@ -21,6 +22,7 @@ function AppRouter() {
         <Route path="/" exact component={Home} />
         <Route path="/about/" component={About} />
         <Route path="/ears/" component={Ears} />
+        <Route path="/meals/" component={Meals} />
       </Switch>
     </Router>
   )

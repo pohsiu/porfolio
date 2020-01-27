@@ -4,9 +4,10 @@ import Page from '../../components/Page';
 import getPath from '../../utils/getPath';
 import { Typography } from '@material-ui/core';
 import clsx from 'clsx';
+
 const useStyles = makeStyles(theme => ({
   parallaxClass: {
-    backgroundImage: `url(${getPath('images')}/bg4.jpg)`,
+    backgroundImage: `url(${getPath('images')}/bg5.jpg)`,
   },
   pageContent: {
     display: 'flex',
@@ -94,15 +95,8 @@ const useStyles = makeStyles(theme => ({
 
 /*
 System Highlights:
-Realtime message communication: websocket, socket.io.
-Integration of WebRTC and Sip: janus-gateway.
-Realtime Media/Audio recording through WebRTC: WebRTC media server, janus-gateway.
-Realtime sip audio to text transferring: Google SpeechRecgnition, websocket, socket.io.
-
-Other details:
-SPA website implementation: react, react-router.
-Responsibe web design effect: media-query, material-ui library.
-Website frontend data management: redux, react-redux, redux-saga.
+Responsibe web design and css library: bootstrap.
+Line-bot notification: implement with python.
 */
 const Project = (props) => {
   const classes = useStyles();
@@ -167,18 +161,18 @@ const Project = (props) => {
   )
 }
 
-const Ears = (props) => {
+const Meals = (props) => {
   const classes = useStyles();
   return (
     <Page
-      title="Ears"
+      title="Meals"
       spanTitle="WebRTC media server"
       spanDetail="Matching sign language service prodivers and users"
       parallaxClass={classes.parallaxClass}
       >
       <div className={classes.pageContent}>
         <Project
-          title="d'Octo Ears"
+          title="Meal Ordering"
           description='A sign language translation service matching platform. The application can support user who are hard of hearing get assistant of translation from sign
 language association.' />
       </div>
@@ -186,4 +180,4 @@ language association.' />
   );
 }
 
-export default Ears;
+export default Meals;

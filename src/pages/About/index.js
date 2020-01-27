@@ -79,6 +79,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+// TODO: RWD implement
 const ContentSection = (props) => {
   const classes = useStyles();
   const { details, position, period, isFirst, ...others } = props;
@@ -225,6 +226,7 @@ const About = (props) => {
               </div>
             </div>
           </div>
+          {/* { TODO: add skill and opensource part in here } */}
         </div>
         
       </div>
