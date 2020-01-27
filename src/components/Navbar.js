@@ -142,7 +142,7 @@ const SMNavItems = (props) => {
   return (
     <ul className={clxs(classes.smNavItems)} {...others}> 
       <Grow in={checked} {...(checked ? { timeout: 200 } : {})}><NavItem href='/about/' isSm >About</NavItem></Grow>
-      <Grow in={checked} {...(checked ? { timeout: 600 } : {})}><NavItem href='/projects/' isSm >Projects</NavItem></Grow>
+      <Grow in={checked} {...(checked ? { timeout: 600 } : {})}><NavItem href='/ears/' isSm >Ears</NavItem></Grow>
       {/* <Grow in={checked} {...(checked ? { timeout: 800 } : {})}><NavItem href='/skill/' isSm >Skill</NavItem></Grow>
       <Grow in={checked} {...(checked ? { timeout: 1200 } : {})}><NavItem href='/opensource/' isSm >Open Source</NavItem></Grow> */}
     </ul>
@@ -196,7 +196,7 @@ const Navbar = (props) => {
         </Link>
         <ul className={classes.navItems}>
           <NavItem href='/about/'>About</NavItem>
-          <NavItem href='/projects/'>Projects</NavItem>
+          <NavItem href='/ears/'>Ears</NavItem>
           {/* <NavItem href='/skill/'>Skill</NavItem>
           <NavItem href='/opensource/'>Open Source</NavItem> */}
         </ul>

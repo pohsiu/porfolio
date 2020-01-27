@@ -11,10 +11,9 @@ const sectionLists = [
     pageUrl: "/about/",
   },
   {
-    title: "ProjectA",
-    // subtitle: "Platform Design",
-    description: "The past works that I could share with. Including website, application, chatbot etc.",
-    pageUrl: "/projects/",
+    title: "Ears",
+    description: "An application integrated webRTC and sip service for hearing impairment people",
+    pageUrl: "/ears/",
   },
   {
     title: "ProjectB",

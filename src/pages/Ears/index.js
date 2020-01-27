@@ -51,6 +51,9 @@ const useStyles = makeStyles(theme => ({
   blockThree: {
     height: 800,
   },
+  blockFive: {
+    backgroundImage: `linear-gradient(to right, ${lighten(theme.palette.background.five, 0.2)}, ${lighten(theme.palette.background.five, 0.8)})`,
+  },
   blockNumber: {
     '-webkit-text-stroke': `1px ${theme.palette.background.main}`,  
     '-webkit-text-fill-color': 'transparent',
@@ -107,6 +110,7 @@ const Project = (props) => {
     <div className={classes.projectRoot}>
       <div className={clsx(classes.blockClass, classes.blockOne)}>
         <div className={classes.textBlockBoundary}>
+          <Typography variant='subtitle2' style={{ color: 'black', fontWeight: 'bold' }}>{'Intros.'}</Typography>
           <Typography variant='h3' color='primary'>{props.title || 'Project Title'}</Typography>
           <Typography className={classes.description} variant='body1' color='primary'>{props.description || 'Project Title'}</Typography>
         </div>
@@ -134,7 +138,7 @@ const Project = (props) => {
           <Typography variant='body1' color='primary' className={classes.bodyTwo}>{'Realtime audio to text transferring via google speechRecognition and websocket.'}</Typography>
         </div>
       </div>
-      <div className={clsx(classes.blockClass, classes.blockTwo)}>
+      <div className={clsx(classes.blockClass, classes.blockFive)}>
         <Typography className={clsx(classes.blockNumber, classes.numberThree)} variant='h1'>{'05'}</Typography>
         <div className={clsx(classes.textBlockBoundary, classes.boundaryThree)}> 
           <Typography variant='h3' color='primary' className={classes.titleThree}>RWD {<strong>Implementation</strong>}</Typography>
@@ -163,16 +167,21 @@ const Project = (props) => {
   )
 }
 
-const ProjectA = (props) => {
+const Ears = (props) => {
   const classes = useStyles();
   return (
-    <Page title="ProjectA" parallaxClass={classes.parallaxClass}>
+    <Page
+      title="Ears"
+      spanTitle="WebRTC media server"
+      spanDetail="Matching sign language service prodivers and users"
+      parallaxClass={classes.parallaxClass}
+      >
       <div className={classes.pageContent}>
-        <Project title="d'Octo Ears" description='A Sign Language Translation Matching Platform. The application can support user who are hard of hearing get assistant of translation from sign
+        <Project title="d'Octo Ears" description='A sign language translation service matching platform. The application can support user who are hard of hearing get assistant of translation from sign
 language association.' />
       </div>
     </Page>
   );
 }
 
-export default ProjectA;
+export default Ears;

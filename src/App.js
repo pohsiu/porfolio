@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from './pages/Home';
 import About from './pages/About';
-import ProjectA from './pages/ProjectA';
+import Ears from './pages/Ears';
 const useStyles = makeStyles(theme => ({
   app: {
     display: 'flex',
@@ -14,27 +14,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-// function usePrevious(value) {
-//   // The ref object is a generic container whose current property is mutable ...
-//   // ... and can hold any value, similar to an instance property on a class
-//   const ref = useRef();
-  
-//   // Store current value in ref
-//   useEffect(() => {
-//     ref.current = value;
-//   }, [value]); // Only re-run if value changes
-  
-//   // Return previous value (happens before update in useEffect above)
-//   return ref.current;
-// }
-
 function AppRouter() {
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/about/" component={About} />
-        <Route path="/projects/" component={ProjectA} />
+        <Route path="/ears/" component={Ears} />
       </Switch>
     </Router>
   )

@@ -18,6 +18,8 @@ import { createMuiTheme } from '@material-ui/core/styles';
 // #d5f4e6
 // #80ced6
 
+// green theme
+// #319370
 export default createMuiTheme({
   palette: {
     primary: {
@@ -35,6 +37,7 @@ export default createMuiTheme({
       one: '#ffffff',
       two: '#d5f4e6',
       three: '#92a8d1',
+      five: '#319370',
     }
   },
 });
