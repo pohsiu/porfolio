@@ -27,13 +27,17 @@ const useStyles = makeStyles(theme => ({
     display: 'grid',
     gridTemplateColumns: '1fr 3fr',
     paddingRight: 24,
+    [theme.breakpoints.down('sm')]: {
+      gridTemplateColumns: '1fr',
+      gridRowGap: '1rem',
+    }
   },
   columnDiv: {
     display: 'flex',
     flexDirection: 'column',
     flex: 1,
   },
-  rowsDiv: {
+  rowsDivInColumn: {
     borderBottom: '1px solid #3c434d',
     marginTop: 48,
     minHeight: 80,
@@ -49,6 +53,9 @@ const useStyles = makeStyles(theme => ({
     marginBottom: 24,
     '&:last-child': {
       marginBottom: 0,
+    },
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
     }
   },
   detail: {
@@ -57,6 +64,11 @@ const useStyles = makeStyles(theme => ({
     paddingRight: '10%',
     lineHeight: 2,
     whiteSpace: 'pre-line',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+      whiteSpace: 'normal',
+      paddingBottom: 32,
+    }
   },
   extraDetial: {
     display: 'flex',
@@ -91,7 +103,7 @@ const ContentSection = (props) => {
       </div>
       <div>
         <Typography className={classes.position} variant="h3" color={'secondary'} >{position}</Typography>
-        <div className={classes.rowsDiv}>
+        <div className={classes.rowsDivInColumn}>
           
           {details && details.map(({ text, withRight, title, description }, index) => 
             {
