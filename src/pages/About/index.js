@@ -9,9 +9,9 @@ import Resume from '../../components/Svgs/Resume';
 import Medium from '../../components/Svgs/Medium';
 import LinkedIn from '../../components/Svgs/LinkedIn';
 import Github from '../../components/Svgs/Github';
+import SkillDomain from './SkillDomain';
 
 const useStyles = makeStyles(theme => ({
-  
   parallaxClass: {
     backgroundImage: `url(${getPath('images')}/bg6.jpg)`,
     
@@ -79,6 +79,9 @@ const useStyles = makeStyles(theme => ({
   },
   position: {
     lineHeight: 1.25,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 36,
+    },
   },
   iconDiv: {
     backgroundColor: theme.palette.secondary.main,
@@ -90,9 +93,74 @@ const useStyles = makeStyles(theme => ({
     width: 48,
     height: 48,
     color: theme.palette.icon.main,
-  }
+  },
 }));
 
+const skillsMap = {
+  Programming: [
+    {
+      name: 'JS',
+      color: '#E18C1A',
+      percentage: '80',
+    },
+    {
+      name: 'CSS',
+      color: '#1778A6',
+      percentage: '60',
+    },
+    {
+      name: 'HTML',
+      color: '#B64967',
+      percentage: '80',
+    },
+    {
+      name: 'nodejs',
+      color: '#476E74',
+      percentage: '70',
+    },
+    {
+      name: 'python',
+      color: '#504069',
+      percentage: '70',
+    },
+  ],
+  Framework: [
+    {
+      name: 'React',
+      color: 'rgb(125, 210, 240)',
+      percentage: '90',
+    },
+    {
+      name: 'Django',
+      color: 'rgb(29, 59, 46)',
+      percentage: '70',
+    },
+  ],
+  CSSLibrary: [
+    {
+      name: 'Material-UI',
+      color: 'rgb(53, 129, 197)',
+      percentage: '80',
+    },
+    {
+      name: 'Bootstrap',
+      color: 'rgb(56, 43, 82)',
+      percentage: '70',
+    },
+    {
+      name: 'SASS',
+      color: 'rgb(165, 93, 129)',
+      percentage: '60',
+    },
+  ],
+  Others: [
+    {
+      name: 'WebRTC',
+      color: 'rgb(247, 206, 71)',
+      percentage: '60',
+    },
+  ]
+}
 // TODO: RWD implement
 const ContentSection = (props) => {
   const classes = useStyles();
@@ -116,7 +184,7 @@ const ContentSection = (props) => {
                       {text}
                     </Typography>
                     <div className={classes.detail} >
-                      <Typography variant="h3" color={'secondary'}>
+                      <Typography className={classes.position} variant="h3" color={'secondary'}>
                         {title}
                       </Typography>
                       <Typography variant="body2" color={'secondary'} style={{ marginTop: 12, color: 'rgba(255, 255, 255, 0.6)' }}>
@@ -173,7 +241,20 @@ const About = (props) => {
           <ContentSection
             period={'From 2014 to 2016'}
             position={'NCCU, Manament Information System, Master'}
-            // details={['Paper, R, php Oracle']}
+            details={[
+              { text: 'The Study of Order Decisions under Indirect Selling Model of an Electronic Component Distributor-taking ABC Company as an Example',
+                withRight: true,
+                title: 'Thesis Domain',
+                description: 'Supply Chain Management, Decision Making'},
+              { text: 'Analysis of relationship between dengue and spraying rate',
+                withRight: true,
+                title: 'Tools',
+                description: 'R computing'},
+              { text: 'Sceneryfactory recommendation System, using open data as data source to create sceneryfactory’s map of taiwan and recommend scenery at random',
+                withRight: true,
+                title: 'Tools',
+                description: 'php, oracle, opendata'}
+              ]}
           />
           <ContentSection
             period={'From 2014/7 to 2014/12'}
@@ -199,82 +280,59 @@ const About = (props) => {
                 description: 'First Place' },
             ]}
           />
-          <div className={classes.sectionDiv}>
-            <div />
-            <div className={clsx(classes.columnDiv, classes.borderAtBottom)} style={{ paddingBottom: 64 }}>
-              <div className={classes.rowDiv}>
-                <div className={clsx(classes.detail, classes.extraDetial)}>
-                  <div>
-                    <IconButton className={classes.iconDiv} onClick={onClickIcon(`${getPath('resume')}/Resume.pdf`)}>
-                      <Resume className={classes.icon} />
-                    </IconButton>
-                  </div>
-                  <Typography variant='h5' style={{ paddingLeft: 48 }}>Resume</Typography>
-                </div>
-                <div className={clsx(classes.detail, classes.extraDetial)}>
-                  <div>
-                    <IconButton className={classes.iconDiv} onClick={onClickIcon("https://github.com/pohsiu")}>
-                      <Github className={classes.icon} />
-                    </IconButton>
-                  </div>
-                  <Typography variant='h5' style={{ paddingLeft: 48 }}>Github</Typography>
-                </div>
-              </div>
-              <div className={classes.rowDiv}>
-                <div className={clsx(classes.detail, classes.extraDetial)}>
-                  <div>
-                    <IconButton className={classes.iconDiv} onClick={onClickIcon("https://www.linkedin.com/in/hsiao-louis-7434377a/")}>
-                      <LinkedIn className={classes.icon} />
-                    </IconButton>
-                  </div>
-                  <Typography variant='h5' style={{ paddingLeft: 48 }}>LinkedIn</Typography>
-                </div>
-                <div className={clsx(classes.detail, classes.extraDetial)}>
-                  <div>
-                    <IconButton className={classes.iconDiv} onClick={onClickIcon("https://medium.com/@pohsiu0709")}>
-                      <Medium className={classes.icon} />
-                    </IconButton>
-                  </div>
-                  <Typography variant='h5' style={{ paddingLeft: 48 }}>Medium</Typography>
-                </div>
-              </div>
-            </div>
-          </div>
           <div className={classes.sectionDiv} style={{ paddingBottom: 64 }}>
-            <div />
+            <Typography variant="subtitle1" color={'secondary'} gutterBottom>Skills</Typography>
             <div>
-              <Typography className={classes.position} variant="h3" color={'secondary'} >Skills</Typography>
-              <div>
-                <div>Programming</div>
-                
-                <div>Javascript</div>
-                <div>CSS</div>
-                <div>HTML</div>
-                <div>nodejs</div>
-                <div>python</div>
+              {Object.keys(skillsMap).map(domainName => 
+                <SkillDomain 
+                  domain={domainName}
+                  skills={skillsMap[domainName]}
+                />)}
+            </div>
+          </div>
+        </div>
+        <div className={classes.sectionDiv}>
+          <div />
+          <div className={clsx(classes.columnDiv, classes.borderAtBottom)} style={{ paddingBottom: 64 }}>
+            <div className={classes.rowDiv}>
+              <div className={clsx(classes.detail, classes.extraDetial)}>
+                <div>
+                  <IconButton className={classes.iconDiv} onClick={onClickIcon(`${getPath('resume')}/Resume.pdf`)}>
+                    <Resume className={classes.icon} />
+                  </IconButton>
+                </div>
+                <Typography variant='h5' style={{ paddingLeft: 48 }}>Resume</Typography>
               </div>
-              <div>
-                <div>Framework</div>
-                
-                <div>React</div>
-                <div>Django</div>
+              <div className={clsx(classes.detail, classes.extraDetial)}>
+                <div>
+                  <IconButton className={classes.iconDiv} onClick={onClickIcon("https://github.com/pohsiu")}>
+                    <Github className={classes.icon} />
+                  </IconButton>
+                </div>
+                <Typography variant='h5' style={{ paddingLeft: 48 }}>Github</Typography>
               </div>
-              <div>
-                <div>CSS Related library</div>
-                
-                <div>Material ui</div>
-                <div>Bootstrap</div>
-                <div>SASS</div>
+            </div>
+            <div className={classes.rowDiv}>
+              <div className={clsx(classes.detail, classes.extraDetial)}>
+                <div>
+                  <IconButton className={classes.iconDiv} onClick={onClickIcon("https://www.linkedin.com/in/hsiao-louis-7434377a/")}>
+                    <LinkedIn className={classes.icon} />
+                  </IconButton>
+                </div>
+                <Typography variant='h5' style={{ paddingLeft: 48 }}>LinkedIn</Typography>
               </div>
-              <div>
-                <div>Others</div>
-                
-                <div>WebRTC</div>
+              <div className={clsx(classes.detail, classes.extraDetial)}>
+                <div>
+                  <IconButton className={classes.iconDiv} onClick={onClickIcon("https://medium.com/@pohsiu0709")}>
+                    <Medium className={classes.icon} />
+                  </IconButton>
+                </div>
+                <Typography variant='h5' style={{ paddingLeft: 48 }}>Medium</Typography>
               </div>
             </div>
           </div>
-          {/* { TODO: add skill and opensource part in here } */}
         </div>
+          
         
       </div>
     </Page>

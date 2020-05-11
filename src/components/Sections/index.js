@@ -1,32 +1,6 @@
 import React, { useRef, useCallback, useState } from 'react';
 import ScrollBar from './ScrollBar';
 import Section from './Section';
-// import { Link } from "react-router-dom";
-
-const sectionLists = [
-  {
-    title: "About",
-    // subtitle: "Explore More",
-    description: "More detail about myself,such as my experiences, bobbies etc.",
-    pageUrl: "/about/",
-  },
-  {
-    title: "Ears",
-    description: "An application integrated webRTC and sip service for hearing impairment people",
-    pageUrl: "/ears/",
-  },
-  {
-    title: "Meals",
-    description: "The past works that I could share with. Including website, application, chatbot etc.",
-    pageUrl: "/meals/",
-  },
-  {
-    title: "ProjectC",
-    // subtitle: "Platform Design",
-    description: "The past works that I could share with. Including website, application, chatbot etc.",
-    pageUrl: "/projects/",
-  },
-]
 
 const Sections = props => {
   const sectionsRef = useRef(null);
@@ -48,19 +22,20 @@ const Sections = props => {
     });
   }, [sectionsRef]);
 
-  const { setSectionIndex } = props;
+  const { setSectionIndex, sectionLists, scrollBar } = props;
   const mouseOver = useCallback((current) => () => {
+    if (current === 0 ) return;
     setSectionIndex(current.toString());
   }, [setSectionIndex]);
 
   const mouseOut = useCallback(() => {
     setSectionIndex(undefined);
   }, [setSectionIndex]);
-
   return (
     <div ref={sectionsRef} className={props.className} onWheel={onWheelEvent} >
       {sectionLists.map((each, index) => 
         <Section
+          sectionIndex={props.sectionIndex}
           key={`pro${index}`}
           url={each.pageUrl}
           mouseOut={mouseOut}
@@ -68,9 +43,11 @@ const Sections = props => {
           title={each.title}
           subtitle={each.subtitle}
           description={each.description}
+          first={each.first}
+          titles={each.titles}
         />
       )}
-      <ScrollBar style={{ transform: `translateX(${currentTransform}px)`, width: 374 }}/>
+      {scrollBar && <ScrollBar style={{ transform: `translateX(${currentTransform}px)`, width: 374 }}/>}
     </div>
   );
 }

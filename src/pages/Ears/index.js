@@ -49,7 +49,9 @@ const useStyles = makeStyles(theme => ({
     backgroundImage: `linear-gradient(to right, ${lighten(theme.palette.background.three, 0.8)}, ${theme.palette.background.three})`,
   },
   blockThree: {
-    height: 800,
+  },
+  blockFour: {
+    paddingBottom: 64,
   },
   blockFive: {
     backgroundImage: `linear-gradient(to right, ${lighten(theme.palette.background.five, 0.2)}, ${lighten(theme.palette.background.five, 0.8)})`,
@@ -87,9 +89,45 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 100,
   },
   titleThree: {
-    
     fontWeight: 100,
   },
+  realtimeImg: { 
+    width: 300,
+    height: 400,
+    position: 'absolute',
+    top: '40%',
+    right: '15%',
+    boxShadow: '0 1rem 2rem rgba(0, 0, 0, .2)'
+  },
+  blockThreePics: {
+    marginTop: 48,
+    paddingRight: 24,
+    display: 'inline-block',
+  },
+  blockFourPics: {
+    marginTop: 48,
+    paddingLeft: 64,
+    display: 'inline-block',
+  },
+  picClass: {
+    width: 700, height: 420,
+  },
+  sipPicClass: {
+    paddingLeft: 24,
+    width: 260, height: 420,
+  },
+  rwdPic1: { 
+    width: 320, height: 540,
+    position: 'absolute', top: '30%', left: 480,
+  },
+  rwdPic2: {
+    width: 320, height: 540,
+    position: 'absolute', top: '8%', left: 360,
+  },
+  rwdPic3: {
+    width: 320, height: 540,
+    position: 'absolute', top: '20%', left: 80,
+  }
 }));
 
 /*
@@ -115,7 +153,7 @@ const Project = (props) => {
           <Typography className={classes.description} variant='body1' color='primary'>{props.description || 'Project Title'}</Typography>
         </div>
         <Typography className={clsx(classes.blockNumber, classes.numberOne)} variant='h1'>{'01'}</Typography>
-        <div style={{ border: '1px solid black', width: 700, height: 420, marginLeft: 80, marginTop: 24, color: 'black' }}>Login Screen Maybe</div>
+        <img alt='landing' style={{ width: 700, height: 420, marginLeft: 80, marginTop: 24, boxShadow: '0 1rem 2rem rgba(0, 0, 0, .2)' }} src={process.env.PUBLIC_URL + '/works/ears/landing.png'} />
       </div>
       <div className={clsx(classes.blockClass, classes.blockTwo)}>
         <Typography className={clsx(classes.blockNumber, classes.numberTwo)} variant='h1'>{'02'}</Typography>
@@ -123,6 +161,7 @@ const Project = (props) => {
         <div className={clsx(classes.textBlockBoundary, classes.boundaryTwo)}>
           <Typography variant='body1' color='primary' className={classes.bodyTwo}>{'Realize realtime message communication for each video call via websocket and socket.io library.'}</Typography>
         </div>
+        <img alt='realtime' className={classes.realtimeImg} src={process.env.PUBLIC_URL + '/works/ears/realtime_msg.png'} />
       </div>
       <div className={clsx(classes.blockClass, classes.blockThree)}>
         <Typography className={clsx(classes.blockNumber, classes.numberThree)} variant='h1'>{'03'}</Typography>
@@ -130,12 +169,21 @@ const Project = (props) => {
           <Typography variant='h3' color='primary' className={classes.titleThree}>{<strong>Integration</strong>} of WebRTC & Sip</Typography>
           <Typography variant='body1' color='primary' className={classes.bodyThree}>{'Accomplished video/audio recording feature by WebRTC media server. User can lunch a video communication and dial general telecom via sip. Third party open source library usage: janus-gateway.'}</Typography>
         </div>
+        <div className={classes.blockThreePics}>
+          <img alt='webrtcandsip' className={classes.picClass} src={process.env.PUBLIC_URL + '/works/ears/webrtcAndSip.png'} />
+          <img alt='sip1' className={classes.sipPicClass} src={process.env.PUBLIC_URL + '/works/ears/sip1.png'} />
+          <img alt='sip2' className={classes.sipPicClass} src={process.env.PUBLIC_URL + '/works/ears/sip2.png'} />
+        </div>
       </div>
-      <div className={clsx(classes.blockClass)}>
+      <div className={clsx(classes.blockClass, classes.blockFour)}>
         <Typography className={clsx(classes.blockNumber, classes.numberTwo)} variant='h1'>{'04'}</Typography>
         <Typography variant='h3' color='primary' className={classes.titleTwo}>{<strong>Audio</strong>} interpretation</Typography>
         <div className={clsx(classes.textBlockBoundary, classes.boundaryTwo)}> 
           <Typography variant='body1' color='primary' className={classes.bodyTwo}>{'Realtime audio to text transferring via google speechRecognition and websocket.'}</Typography>
+        </div>
+        <div className={classes.blockFourPics}>
+          <img alt='stt1' className={classes.picClass} src={process.env.PUBLIC_URL + '/works/ears/stt1.png'} />
+          <img alt='stt2' className={classes.sipPicClass} src={process.env.PUBLIC_URL + '/works/ears/stt2.png'} />
         </div>
       </div>
       <div className={clsx(classes.blockClass, classes.blockFive)}>
@@ -144,15 +192,9 @@ const Project = (props) => {
           <Typography variant='h3' color='primary' className={classes.titleThree}>RWD {<strong>Implementation</strong>}</Typography>
           <Typography variant='body1' color='primary' className={classes.bodyThree}>{'Build responsive web design effect by material-ui and media-query.'}</Typography>
           
-          <div
-            style={{ 
-              border: '1px solid black', width: 320, height: 540, color: 'black',
-              position: 'absolute', top: '20%', left: 80,
-            }}>Mobile Screen 1</div>
-          <div style={{ 
-              border: '1px solid black', width: 320, height: 540, color: 'black',
-              position: 'absolute', top: '10%', left: 280,
-            }}>Mobile Screen 2</div>
+          <img alt='rwd1' className={classes.rwdPic1} src={process.env.PUBLIC_URL + '/works/ears/rwd1.png'} />
+          <img alt='rwd2' className={classes.rwdPic2} src={process.env.PUBLIC_URL + '/works/ears/rwd2.png'} />
+          <img alt='rwd3' className={classes.rwdPic3} src={process.env.PUBLIC_URL + '/works/ears/rwd3.png'} />
           
         </div>
       </div>
@@ -161,6 +203,11 @@ const Project = (props) => {
         <Typography variant='h3' color='primary' className={classes.titleTwo}>{<strong>Other</strong>} detials</Typography>
         <div className={clsx(classes.textBlockBoundary, classes.boundaryTwo)}> 
           <Typography variant='body1' color='primary' className={classes.bodyTwo}>{'SPA website implementation: react, react-router. Website frontend data management: redux, react-redux, redux-saga.'}</Typography>
+        </div>
+        <div style={{ padding: 64 }}>
+          <img alt='other1' className={classes.picClass} src={process.env.PUBLIC_URL + '/works/ears/other1.png'} />
+          <img alt='other2' className={classes.picClass} src={process.env.PUBLIC_URL + '/works/ears/other2.png'} />
+          <img alt='other3' className={classes.picClass} src={process.env.PUBLIC_URL + '/works/ears/other3.png'} />
         </div>
       </div>
     </div>

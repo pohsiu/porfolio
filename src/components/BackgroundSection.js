@@ -45,7 +45,7 @@ const dispImage = "./images/displacement/6.jpg"
 
 
 const images = [
-  './images/bg6.jpg',
+  '',
   './images/bg3.jpg',
   './images/bg2.jpg',
   './images/bg4.jpg',

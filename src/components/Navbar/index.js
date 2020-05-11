@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import { makeStyles, darken } from '@material-ui/core/styles';
 import HomeIcon from '@material-ui/icons/Home';
 import Grow from '@material-ui/core/Grow';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import clxs from 'clsx';
+import NavItem from './NavItem';
+import { useWidth } from '../../hooks';
 
 const useStyles = makeStyles(theme => ({
   navRoot: {
@@ -26,20 +27,19 @@ const useStyles = makeStyles(theme => ({
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
     gridTemplateRows: '5.5rem 1fr',
-    width: '100vw',
+    width: 'calc(100vw - 48px)',
   },
   isOpenWrapper: {
     height: '100vh',
     backgroundColor: theme.palette.background.main,
     transition: 'backgroundColor .6s ease-in',
   },
-  
   menu: {
-    display: 'flex',
-    color: 'white',
-    justifyContent: 'flex-end',
     paddingRight: 48,
     paddingTop: '0.5rem',
+  },
+  menuBtnClass: {
+    textAlign: 'right',
     '&:hover': {
       cursor: 'pointer',
     },
@@ -75,92 +75,23 @@ const useStyles = makeStyles(theme => ({
     paddingInlineStart: '20px',
     lineHeight: 1.6,
   },
-  smNavItem: {
-    fontSize: '2.5rem',
-    listStyleType: 'none',
-    width: '100vw',
-  },
-  navItem: {
-    position: 'relative',
-    padding: '0 2.25rem',
-    cursor: 'pointer',
-    transition: 'transform .2s cubic-bezier(.59,.11,.64,1.38)',
-    '&:hover': {
-      transform: 'translateY(-30%)',
-    },
-    '&:active': {
-      transitionDuration: '.02s',
-      transform: 'translateY(2%)',
-    }
-  },
-  navLink: {
-    display: 'inline-block',
-    position: 'relative',
-    height: '1.3rem',
-    margin: '-.5rem',
-    padding: 0,
-    zIndex: 20,
-    textAlign: 'center',
-    color: '#fff',
-    textDecoration: 'none',
-    overflow: 'hidden',
-    cursor: 'pointer',
-  },
-  smNavLink: {
-    height: '100%',
-    transition: 'transform .2s cubic-bezier(.59,.11,.64,1.38)',
-    '&:hover': {
-      color: theme.palette.secondary.one,
-      transform: 'translate(-2px, -2px)',
-    },
-    '&:active': {
-      transitionDuration: '.02s',
-      transform: 'translate(1px, 1px)',
-    }
-  },
-  navLinkBg: {
-  },
-  navEffect: {
-  },
 }))
 
-const useWidth = () => {
-  const theme = useTheme();
-  const keys = [...theme.breakpoints.keys].reverse();
-  return (
-    keys.reduce((output, key) => {
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      const matches = useMediaQuery(theme.breakpoints.up(key));
-      return !output && matches ? key : output;
-    }, null) || 'xs'
-  );
-}
+
 
 const SMNavItems = (props) => {
   const classes = useStyles();
-  const { checked, ...others } = props;
+  const { checked, onMenuClick, ...others } = props;
   return (
     <ul className={clxs(classes.smNavItems)} {...others}> 
-      <Grow in={checked} {...(checked ? { timeout: 200 } : {})}><NavItem href='/about/' isSm >About</NavItem></Grow>
-      <Grow in={checked} {...(checked ? { timeout: 600 } : {})}><NavItem href='/ears/' isSm >Ears</NavItem></Grow>
-      <Grow in={checked} {...(checked ? { timeout: 800 } : {})}><NavItem href='/meals/' isSm >Meals</NavItem></Grow>
+      <Grow in={checked} {...(checked ? { timeout: 200 } : {})}><NavItem onClick={onMenuClick} href='/about/' isSm >About</NavItem></Grow>
+      <Grow in={checked} {...(checked ? { timeout: 600 } : {})}><NavItem onClick={onMenuClick} href='/ears/' isSm >Ears</NavItem></Grow>
+      <Grow in={checked} {...(checked ? { timeout: 800 } : {})}><NavItem onClick={onMenuClick} href='/meals/' isSm >Meals</NavItem></Grow>
       {/* <Grow in={checked} {...(checked ? { timeout: 1200 } : {})}><NavItem href='/opensource/' isSm >Open Source</NavItem></Grow> */}
     </ul>
   )
 }
-const NavItem = (props) => {
-  const classes = useStyles();
-  const { isSm, href, ...others } = props;
-  return (
-    <li className={clxs(classes.navItem, { [classes.smNavItem]: isSm })} {...others}>
-      <Link className={clxs(classes.navLink, { [classes.smNavLink]: isSm })} to={props.href}>
-        <span className={classes.navEffect}>
-          {props.children}
-        </span>
-      </Link>
-    </li>
-  )
-}
+
 
 const Navbar = (props) => {
   const classes = useStyles();
@@ -182,8 +113,10 @@ const Navbar = (props) => {
           <Link className={classes.logoHome} to='/'>
             <HomeIcon />
           </Link>
-          <div className={classes.menu} onClick={onMenuClick}>{isMenuOpen ? 'Close' : 'Menu'}</div>
-          {<SMNavItems checked={isMenuOpen}/>}
+          <div className={classes.menu} onClick={onMenuClick}>
+            <Typography className={classes.menuBtnClass} variant='body2' color='secondary'>{isMenuOpen ? 'Close' : 'Menu'}</Typography>
+          </div>
+          {<SMNavItems checked={isMenuOpen} onMenuClick={onMenuClick}/>}
         </div>
       </nav>
     );

@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     display: 'block',
   },
   scrollBar: {
-    backgroundColor: '#dc4133',
+    backgroundColor: theme.palette.primary.main,
     position: 'relative',
     display: 'block',
     top: -1,

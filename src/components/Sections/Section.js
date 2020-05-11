@@ -5,6 +5,9 @@ import Slide from '@material-ui/core/Slide';
 import { makeStyles } from '@material-ui/core/styles';
 import classNames from 'clsx';
 import { Link } from "react-router-dom";
+import Forward from '@material-ui/icons/ArrowForward';
+import BrushA from '../Brush/TypeA';
+import BrushB from '../Brush/TypeB';
 
 const useStyles = makeStyles(theme => ({
   project: {
@@ -21,19 +24,25 @@ const useStyles = makeStyles(theme => ({
     cursor: 'none',
     padding: '0 4.5rem 8rem',
     paddingBottom: 120,
-    borderRight: '1px #9da7b3 solid',
+    borderRight: '1px hsla(0,0%,100%,.05) solid',
     '&:first-child': {
       minWidth: '66vw',
       width: '66%',
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down('sm')]: {
         minWidth: '100vw',
         width: '100%',
       },
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       minWidth: '100vw',
       width: '100%',
     },
+  },
+  noBorder: {
+    borderRight: 'none',
+  },
+  projectHover: {
+    background: 'rgba(0,0,0, 0.25)',
   },
   projectLink: {
     display: 'flex',
@@ -45,8 +54,71 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'flex-end',
     textDecoration: 'none',
     userSelect: 'none',
+    
   },
+  '@keyframes brush': {
+    '0%': { strokeDashoffset: 1500 },
+    '100%': { strokeDashoffset: 0 },
+  },
+  title: {
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 84,
+    },
+    [theme.breakpoints.down('xs')]: {
+      fontSize: 64,
+    }
+  },
+  withSvg: {
+    position: 'relative',
+    zIndex: 1,
+    '& svg': {
+      position: 'absolute',
+      top: '50%',
+      left: 0,
+      transform: 'translate(-10%, -50%)',
+      width: '120%',
+      zIndex: 1,
+      maxWidth: 300,
+    },
+    '& path': {
+      strokeDasharray: 1500,
+      strokeDashoffset: 0,
+      animation: '$brush .8s cubic-bezier(.7,.22,1,.68) .5s',
+    }
+  },
+  icon: {
+    paddingLeft: 8,
+    alignSelf: 'center',
+    color: theme.palette.primary.main,
+  }
 }))
+
+const renderTitle = (classes, first, title, titles) => {
+  if (first) {
+    return (
+      <Typography 
+        variant="h1" component="h2" color='secondary' className={classes.title}>
+        {titles[0]}
+        <div className={classes.withSvg}>
+          <div style={{ position: 'relative', zIndex: 2 }}>{titles[1]}</div>
+          <BrushA />
+        </div>
+        {titles[2]}
+        <div className={classes.withSvg}>
+          <div style={{ position: 'relative', zIndex: 2 }}>{titles[3]}</div>
+          <BrushB />
+        </div>
+        
+      </Typography>
+    )
+  }
+  return (
+    <Typography 
+      variant="h1" component="h2" color='secondary' className={classes.title}>
+      {title}
+    </Typography>
+  )
+}
 
 const Project = props => {
   const  classes = useStyles();
@@ -62,17 +134,29 @@ const Project = props => {
     mouseOut();
     setIsHover(false);
   }, [mouseOut]);
-
-  const { description, title, subtitle } = props;
+  const { description, title, subtitle, sectionIndex, titles, first } = props;
   return (
-    <div className={classNames(classes.project)} onMouseEnter={onMouseOver} onMouseLeave={onMouseOut}>
+    <div 
+      className={
+        classNames(
+          classes.project, 
+          { 
+            [classes.projectHover]: isHover,
+            [classes.noBorder]: !!sectionIndex,
+          }
+      )}
+      onMouseEnter={onMouseOver}
+      onMouseLeave={onMouseOut}>
       <Link to={props.url} className={classNames(classes.projectLink, {[classes.projectLinkIsHover]: isHover })}>
         {subtitle && <Typography variant="h5" color='secondary'>{subtitle}</Typography>}
-        <Typography variant="h1" component="h2" color='secondary'>{title}</Typography>
+        {renderTitle(classes, first, title, titles)}
         <Slide direction="up" in={isHover} mountOnEnter unmountOnExit>
           <div>
             <Typography variant="subtitle1" color='secondary'>{description}</Typography>
-            <Typography variant="h6" color='secondary'>Explore More -> </Typography>
+            <Typography variant="h6" color='secondary' style={{ display: 'flex' }}>
+              Explore More
+              <Forward className={classes.icon}/>
+            </Typography>
           </div>
         </Slide>
       </Link>

@@ -113,15 +113,15 @@ const Project = (props) => {
       </div>
       <div className={clsx(classes.blockClass, classes.blockTwo)}>
         <Typography className={clsx(classes.blockNumber, classes.numberTwo)} variant='h1'>{'02'}</Typography>
-        <Typography variant='h3' color='primary' className={classes.titleTwo}>{<strong>Realtime</strong>} message</Typography>
+        <Typography variant='h3' color='primary' className={classes.titleTwo}>{<strong>LineBot</strong>} Notification</Typography>
         <div className={clsx(classes.textBlockBoundary, classes.boundaryTwo)}> 
-          <Typography variant='body1' color='primary' className={classes.bodyTwo}>{'Realize realtime message communication for each video call via websocket and socket.io library.'}</Typography>
+          <Typography variant='body1' color='primary' className={classes.bodyTwo}>{'Integrate linebot sdk with python backend support to realize realtime notification'}</Typography>
         </div>
       </div>
       <div className={clsx(classes.blockClass, classes.blockThree)}>
         <Typography className={clsx(classes.blockNumber, classes.numberThree)} variant='h1'>{'03'}</Typography>
         <div className={clsx(classes.textBlockBoundary, classes.boundaryThree)}> 
-          <Typography variant='h3' color='primary' className={classes.titleThree}>{<strong>Integration</strong>} of WebRTC & Sip</Typography>
+          <Typography variant='h3' color='primary' className={classes.titleThree}>{<strong>Top 3</strong>} recommandation</Typography>
           <Typography variant='body1' color='primary' className={classes.bodyThree}>{'Accomplished video/audio recording feature by WebRTC media server. User can lunch a video communication and dial general telecom via sip. Third party open source library usage: janus-gateway.'}</Typography>
         </div>
       </div>
