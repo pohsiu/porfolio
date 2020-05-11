@@ -44,7 +44,7 @@ const useStyles = makeStyles(({ palette }) => ({
     backgroundSize: 'cover',
     backgroundPositionX: '40%',
     backgroundPositionY: '40%',
-    : '$bgAnimation .5s ease-in',
+    animation: '$bgAnimation .5s ease-in',
     // marginLeft: '50%',
     // transform: 'translateX(-50%)',
   },
