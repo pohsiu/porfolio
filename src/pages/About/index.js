@@ -221,7 +221,7 @@ const About = (props) => {
         <div className={classes.columnDiv}>
           <ContentSection 
             isFirst
-            period={'From 2017 to present'}
+            period={'From 2017/12 to 2020/03'}
             position={'Dimension Eight Artificial Intelligence, Software Engineer'}
             details={[
               { text: 'WebRTC framework library integration. Dedicated to modulizing reusable components and data visulization.\nHands on docker and nodejs to develop RESTful api.\nIn charge of mobile version POC products. Opensource projects contribution in npm. ',
